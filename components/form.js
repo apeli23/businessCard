@@ -68,7 +68,7 @@ function Forms (){
             
             <div className="float-child">
             
-                <TextField id="standard-basic" label="Name" onChange={getName} /><br/>
+                <TextField id="standard-basic" label="Name" onChange={getName} fullWidth /><br/>
                 <TextField id="standard-basic" label="Email" onChange={getEmail}/><br/>
                 <TextField id="standard-number" label="Phone_Number"onChange={getPhoneNumber} type="number"
                         InputLabelProps={{
