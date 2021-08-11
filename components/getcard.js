@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     tyography: {
         width: '100%',
         maxWidth: 500,
+        textcolor: "white",
     },
     button: {
         '& > *': {
@@ -49,7 +50,7 @@ function GetCard() {
 
 
 
-    
+
 
     const handleFileInputChange = async (e) => {
         const files = e.target.files;
@@ -106,64 +107,90 @@ function GetCard() {
     //screenshot
     const getImage = () => {
         takeScreenshot(ref.current)
-        .then(uploadImage(image))    
+            .then(uploadImage(image))
     }
-    
+
     // uploadImage(image)
     function uploadImage(img) {
         // console.log(img)
         try {
             fetch("/api/upload", {
-             method: "POST",
-             body: JSON.stringify({ data: image }),
-             headers: { "Content-Type": "application/json" },
-           })
-           .then((response) => {
-             console.log(name,response.status);
-             response.json()
-           .then((data) => {
-               urls.push(data.data); 
+                method: "POST",
+                body: JSON.stringify({ data: image }),
+                headers: { "Content-Type": "application/json" },
             })
-            .then(setupQr(urls));
-            }) 
+                .then((response) => {
+                    console.log(name, response.status);
+                    response.json()
+                        .then((data) => {
+                            urls.push(data.data);
+                        })
+                        .then(setupQr(urls));
+                })
         } catch (error) {
-                console.error(error);
+            console.error(error);
         }
     }
-    
+
     function setupQr(urls) {
         // console.log("backendlinks",urls[0]);
-        
+
         // console.log("qrlinks",urls[0]);
         for (var i = 0; i < urls.length; i++) {
-            qrlink=urls[i]
+            qrlink = urls[i]
         }
-        console.log("qrlinks",qrlink)
+        console.log("qrlinks", qrlink)
         generateQRCode(qrlink)
     }
     const generateQRCode = (link) => {
-        console.log("qrgenerate",link)
-            setQRCodeText(link);
+        console.log("qrgenerate", link)
+        setQRCodeText(link);
     }
-     
+
     return (
         <div>
             <div className="float-container">
-                <div className="float-child">
-                    <div className="card-header">
-                        <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
-                        <h1 ><b>Business name</b></h1>
+                <div className="card-preview">
+                    <h1 id='subtitle'><span> create card</span></h1>
+                    <div className="card">
+                        <div className="back-header">
+                            <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
+                            <h1 id='subtitle'><span> Company name</span></h1>
+                        </div>
+                        <div className="card-content">
+                            <QRCode
+                                size={120}
+                                value={qrCodeText}
+                            />
+                            <div className="details">
+                                <h3 id='span'><span> {name}</span></h3>
+                                <h3 id='span'><span> {phoneNumber}</span></h3>
+                                <h3 id='span'><span> {email}</span></h3>
+                                <h3 id='span'><span> {location}</span></h3>
+                            </div>
+                        </div>
                     </div>
-                    <div className="card-content">
-                        <QRCode
-                            size={150}
-                            value={qrCodeText}
-                        />
-                        <div className="details">
-                            <h3>{name}</h3>
-                            <h3>{phoneNumber}</h3>
-                            <h3>{email}</h3>
-                            <h3>{location}</h3>
+                    <h1 id='subtitle'><span> create card</span></h1>
+                    <div className="card">
+                        <div className="card-header">
+                            <h1 id='subtitle'><span> Company name</span></h1>
+                            <QRCode
+                                size={100}
+                                value={qrCodeText}
+                            />
+                        </div>
+                        <div className="back-content">
+                        <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
+                        </div>
+
+                        <div className="card-content">
+                            
+                            <div className="backfooter">
+                                <h3 id='span'><span> {name}</span></h3>
+                                <h3 id='span'><span> {phoneNumber}</span></h3>
+                                <h3 id='span'><span> {email}</span></h3>
+                                <h3 id='span'><span> {location}</span></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,9 +201,9 @@ function GetCard() {
                     <Typography variant="h5" gutterBottom><b>Import Logo :</b>
                         <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleFileInputChange} />
                     </Typography><br />
-                    <TextField label="Name" onChange={getName} fullWidth /><br />
-                    <TextField label="Email" onChange={getEmail} /><br />
-                    <TextField id="standard-number" label="Phone_Number" onChange={getPhoneNumber} type="number"
+                    <TextField label="Name" color="primary" onChange={getName} fullWidth /><br />
+                    <TextField label="email" onChange={getEmail} /><br />
+                    <TextField id="phone_number" label="Phone_Number" onChange={getPhoneNumber} type="number"
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -189,23 +216,22 @@ function GetCard() {
                 </div>
 
                 <div ref={ref} className="float-child2"
-                // ref={ref}
-                   id="show" 
+                    // ref={ref}
+                    id="show"
                 >
 
-                        <img className="p_pic" width="150" height="150" src={logo} />
+                    <img className="p_pic" width="150" height="150" src={logo} />
 
-                    <Typography variant="h5" gutterBottom><b>Name :</b>  {name}</Typography><br />
-                    <Typography variant="h5" gutterBottom><b>Email:</b> {email}</Typography><br />
-                    <Typography variant="h5" gutterBottom><b>Business/Company :</b> {business}</Typography><br />
-                    <Typography variant="h5" gutterBottom><b>Phone Number :</b> {phoneNumber}</Typography><br />
-                    <Typography variant="h5" gutterBottom><b>Location :</b> {location}</Typography><br />
-                    <Typography variant="h5" gutterBottom><b>Website :</b> {website}</Typography>
+                    <Typography variant="h5" gutterBottom fullWidth><b>Name :</b>  {name}</Typography><br />
+                    <Typography variant="h5" gutterBottom fullWidth><b>Email:</b> {email}</Typography><br />
+                    <Typography variant="h5" gutterBottom fullWidth><b>Business/Company :</b> {business}</Typography><br />
+                    <Typography variant="h5" gutterBottom fullWidth><b>Phone Number :</b> {phoneNumber}</Typography><br />
+                    <Typography variant="h5" gutterBottom fullWidth><b>Location :</b> {location}</Typography><br />
+                    <Typography variant="h5" gutterBottom fullWidth><b>Website :</b> {website}</Typography>
 
                 </div>
             </div>
-            <img src={image}/>
-
+            <img src={image} />
         </div>
     )
 } export default GetCard

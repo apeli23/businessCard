@@ -1,30 +1,35 @@
-html,
 body {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  padding: 20px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  background:
+  linear-gradient(
+    rgba(0, 0, 0, 0.3), 
+    rgba(0, 0, 0, 0.3)
+  ),
+  url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm309-adj-01.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=2204002a48c0d2dc60c1a27a4cc4fd97);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  /* text-align: center; */
+  color: black;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
  
 .card{
-  display: flex;
-  flex-flow: column wrap;
-  width: 400px;
-  padding: 10px;
+  background: url("https://c4.wallpaperflare.com/wallpaper/247/38/533/geometry-space-geometry-dark-abstract-wallpaper-preview.jpg");
   border: 5px solid rgb(0, 0, 0);
-  background: url("https://www.pngkey.com/png/full/951-9515208_business-card-background-black-and-white-visiting-images.png");
-  justify-content: space-between;
-  align-content: space-between;
+  padding: 10px;
 }
+.card-preview {
+  float: left;
+  padding: 20px;
+
+  }
 .p_pic{
   border-radius: 50%;
 }
@@ -49,6 +54,7 @@ padding: 10px;
   width: 250px;
   text-align:right;
   float: right;
+  color: white;
 }
 .container{
   text-align:center;
@@ -64,20 +70,19 @@ padding: 10px;
   /* background:red; */
   border: 1px solid;
 }
-h3{
-  margin: 0;
-}
+
 .float-container {
    /* border: 3px solid rgb(255, 0, 0); */
   padding: 20px;
   width: 100%;
 }
-
+ 
 .float-child {
   width: 50%;
   float: left;
   padding: 20px;
-  /* border: 2px solid rgb(0, 0, 0); */
+  border: 2px solid rgb(0, 0, 0);
+  color: white;
 }  
 .float-child2 {
   width: 50%;
@@ -90,4 +95,80 @@ h3{
   display: none;
   /* text-align: center;
   right: 50; */
+}
+#subtitle {
+     
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #FFF;
+  text-align: center  ;
+  font-family: "lato", sans-serif;
+  font-weight: 100;
+  font-size: 30px;
+  letter-spacing: 3px;
+   
+}
+#subtitle span {
+  background: -webkit-linear-gradient(rgb(255, 255, 255), #d3e9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h3{
+  margin: 0;
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #FFF;
+  text-align: right;
+  font-family: "lato", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+h3 span {
+  background: -webkit-linear-gradient(rgb(255, 255, 255), #d3e9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#title {
+     
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-weight: 300;
+  font-size: 60px;
+  letter-spacing: 10px;
+   
+}
+#title span {
+  background: -webkit-linear-gradient(rgb(112, 112, 112), #182029);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h4{
+  color: white;
+}
+.b_pic{
+  border-radius: 50%;
+  align-items: center;
+}
+.backfooter{
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.back-header{
+
+display:flex;
+width: 100%;
+justify-content: space-between;
+}
+.back-content{
+  width: 100%;
+  /* border:3px solid rgb(0, 0, 0); */
+  text-align:center
 }

@@ -132,7 +132,8 @@ function Card (){
                 <div className="card">
                     <div className="card-header">
                     <img className="p_pic" width="150" height="150" src={logo} alt ="logo "/>
-                    <h1 ><b>Business name</b></h1>
+                    {/* <h1 ><b>Business name</b></h1> */}
+                    <h1 id='subtitle'><span> Company name</span></h1>
                     </div>
                     
                     <div className="card-content">
@@ -141,14 +142,35 @@ function Card (){
                         value={qrCodeText}
                     />
                     <div className="details">
-                        <h3>{name}</h3>
-                        <h3>{phoneNumber}</h3>
-                        <h3>{email}</h3>
-                        <h3>{location}</h3>
+                        <h4>{name}</h4>
+                        <h4>{phoneNumber}</h4>
+                        <h4>{email}</h4>
+                        <h4>{location}</h4>
                     </div>
                     </div>
                     
                 </div>
+                <div className="card">
+                    <div className="card-header">
+                    <img className="p_pic" width="150" height="150" src={logo} alt ="logo "/>
+                    <h1 id='subtitle'><span> Company name</span></h1>
+                    </div>
+                    
+                    <div className="card-content">
+                    <QRCode
+                        size={100}
+                        value={qrCodeText}
+                    />
+                    <div className="details">
+                        <h4>{name}</h4>
+                        <h4>{phoneNumber}</h4>
+                        <h4>{email}</h4>
+                        <h4>{location}</h4>
+                    </div>
+                    </div>
+                    
+                </div>
+            
             </div>
             <div className="float-container">
             <div className="float-child">
@@ -156,7 +178,7 @@ function Card (){
                     <input type="file" accept="image/x-png,image/gif,image/jpeg"  onChange={handleFileInputChange}/>
                 </Typography><br/>
 
-                <TextField  label="Name" onChange={getName} fullWidth /><br/>
+                <TextField  label="Name" onChange={getName} fullWidth><h2>{name}</h2></TextField>  <br/>
                 <TextField label="Email" onChange={getEmail}/><br/>
                 <TextField id="standard-number" label="Phone_Number"onChange={getPhoneNumber} type="number"
                         InputLabelProps={{
