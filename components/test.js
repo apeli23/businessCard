@@ -2,32 +2,41 @@ import React, {useState, createRef} from 'react';
 import { useScreenshot } from 'use-react-screenshot'
 
 function Test(){
-    const ref = createRef(null)
-    const [image, takeScreenshot] = useScreenshot()
-    // const getImage = () => takeScreenshot(ref.current)
-    
-    const getData = async () => {
-        const response = await takeScreenshot(ref.current)
-         
+    const[logo, setLogo]=useState('')
+    const handleFileInputChange = async (e) => {
+        const files = e.target.files;
+        if (!files.length) return;
+        console.log(files)
         
-        console.log(image)
+        // Store promises in array
+        for (let file of files) {
+            await readFile(file).then((encoded_file) => {
+            setLogo(encoded_file);
+            });
+        }
     }
+    function readFile(file) {
+        return new Promise(function (resolve, reject) {
+          let fr = new FileReader();
     
-    getData()
+          fr.onload = function () {
+            resolve(fr.result);
+          };
+    
+          fr.onerror = function () {
+            reject(fr);
+          };
+    
+          fr.readAsDataURL(file);
+        });
+    }
     return(
         <div>
-            <div>
-                <button style={{ marginBottom: '10px' }} onClick={getData}>
-                Take screenshot
-                </button>
-            </div>
-            <img width="200px" src={image} alt={'Screenshot'} />
-            <div ref={ref}>
-                <h1>use-react-screenshot</h1>
-                <p>
-                <strong>hook by @vre2h which allows to create screenshots</strong>
-                </p>
-            </div>
-    </div>
+            <img width="200px" 
+            src={logo}
+            />
+            <input type="file" accept="image/x-png,image/gif,image/jpeg"  onChange={handleFileInputChange}/>  
+        </div>
+        
     )
 }export default Test

@@ -1,4 +1,4 @@
-import React, {useState, createRef} from 'react';
+import React, {useState,useEffect, createRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Card (){
+    let urls =[]
+    let qrlink = ""
     const classes = useStyles();
 
     const [codeLink, setCodeLink] = useState('');
@@ -42,16 +44,13 @@ function Card (){
     const[logo, setLogo]=useState(null)
     const[link, setLink]=useState()
     
-    //screenshot
-    const ref = createRef(null)
-    const [image, takeScreenshot] = useScreenshot()
-    const getImage = () => takeScreenshot(ref.current)
+    
 
     
-   // generate QR code
-  const generateQRCode = () => {
-    setQRCodeText(codeLink);
-  }
+//    // generate QR code
+//   const generateQRCode = () => {
+//     setQRCodeText(codeLink);
+//   }
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     // Abort if there were no files selected
@@ -60,34 +59,28 @@ function Card (){
     console.log(file)
     const reader = new FileReader();
     // convert the image  to  url and pass it
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-        setLogo(reader.result);
-    };
-}
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setLogo(reader.result);
+        };
+    }
     const getName =(e) => {
         setName(e.target.value)
-        setPrint(false)
     }
     const getEmail =(e) => {
     setEmail(e.target.value)
-    setPrint(false)
     }
     const getBusiness =(e) => {
         setBusiness(e.target.value)
-        setPrint(false)
     }
     const getPhoneNumber =(e) => {
         setPhoneNumber(e.target.value)
-        setPrint(false)
     }
     const getLocation =(e) => {
         setLocation(e.target.value)
-        setPrint(false)
     }
     const getWebsite =(e) => {
         setWebsite(e.target.value)
-        setPrint(false)
     
     }
     
@@ -96,32 +89,42 @@ function Card (){
         x.style.display = "block";
     } 
 
-    uploadImage(image)
+    //screenshot
+    const ref = createRef(null)
+    const [image, takeScreenshot] = useScreenshot()
 
-    function uploadImage (EncodedImage) {
-        let urls =[] 
-            // console.log("EncodedImage", EncodedImage)
+    const getImage = async () => 
+        await takeScreenshot(ref.current)
+        uploadImage(image)
+
+   async function uploadImage (EncodedImage) {
+         
+            console.log("EncodedImage", EncodedImage)
             
             try {
-                fetch("/api/upload", {
+                 fetch("/api/upload", {
                   method: "POST",
                   body: JSON.stringify({ data: EncodedImage }),
                   headers: { "Content-Type": "application/json" },
                 })
-                .then((response) => {
-                //   console.log(name,response.status);
-                  response.json().then((data) => {
-                    urls.push(data.data); 
-                    console.log(data.data)
-                  });
-                });
+            //     .then((response) => {
+            //     //   console.log(name,response.status);
+            //       response.json()
+            //     .then((data) => {
+            //         urls.push(data.data); 
+            //         generateQRCode(urls[0])
+            //       });
+            //     }) 
               } catch (error) {
                 console.error(error);
               }
-            createCard(urls)
+            
     }
-    function createCard(urls){
-        console.log(urls[0])
+    // console.log("urls", urls)
+    
+    const generateQRCode = (link) => {
+        console.log("qrlink",link)
+            // setQRCodeText(link);
     }
     return(
         <div>
@@ -129,7 +132,7 @@ function Card (){
                 <div className="card">
                     <div className="card-header">
                     <img className="p_pic" width="150" height="150" src={logo} alt ="logo "/>
-                            <h1 ><b>Business name</b></h1>
+                    <h1 ><b>Business name</b></h1>
                     </div>
                     
                     <div className="card-content">

@@ -6,7 +6,8 @@ import styles from '../styles/Home.module.css'
 import Card from '../components/card'
 import Forms from '../components/form'
 import Test from '../components/test'
-
+import GetCard from '../components/getcard'
+ 
 export default function Home() {
   const ref = createRef(null)
   const [image, takeScreenshot] = useScreenshot()
@@ -20,9 +21,10 @@ export default function Home() {
       </Head>
 
       {/* <Test/> */}
-      <Card/>
+      {/* <Card/> */}
       {/* <Forms/> */}
-       
+      <GetCard/>
+
     </div>
   )
 }
