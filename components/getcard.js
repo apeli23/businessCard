@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import QRCode from 'qrcode.react';
+import QRCode from "react-qr-code";
 import { useScreenshot } from 'use-react-screenshot'
 
 const useStyles = makeStyles((theme) => ({
@@ -148,17 +148,17 @@ function GetCard() {
      
     return (
         <div>
-            <div className="card-container">
-                <div className="card">
+            <div className="float-container">
+                <div className="float-child">
                     <div className="card-header">
                         <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
                         <h1 ><b>Business name</b></h1>
                     </div>
                     <div className="card-content">
-                        {/* <QRCode
-                            size={100}
-                            value="{qrCodeText}"
-                        /> */}
+                        <QRCode
+                            size={150}
+                            value={qrCodeText}
+                        />
                         <div className="details">
                             <h3>{name}</h3>
                             <h3>{phoneNumber}</h3>

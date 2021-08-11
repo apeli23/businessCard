@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';  
-import QRCode from 'qrcode.react';
+import QRCode from "react-qr-code";
 import { useScreenshot } from 'use-react-screenshot'
 
 
@@ -124,7 +124,7 @@ function Card (){
     
     const generateQRCode = (link) => {
         console.log("qrlink",link)
-            // setQRCodeText(link);
+            setQRCodeText(link);
     }
     return(
         <div>

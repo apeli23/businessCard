@@ -18,7 +18,7 @@ a {
 .card{
   display: flex;
   flex-flow: column wrap;
-  width: 500px;
+  width: 400px;
   padding: 10px;
   border: 5px solid rgb(0, 0, 0);
   background: url("https://www.pngkey.com/png/full/951-9515208_business-card-background-black-and-white-visiting-images.png");
@@ -46,7 +46,7 @@ padding: 10px;
 }
 .details{
   /* border: 2px solid rgb(224, 0, 0); */
-  width: 100%;
+  width: 250px;
   text-align:right;
   float: right;
 }
