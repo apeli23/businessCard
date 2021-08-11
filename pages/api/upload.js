@@ -15,28 +15,26 @@ export const config = {
   },
 };
 
-export default async function handler(req, res) {
+export default async function handler(req,res) {
+  let links = []
   let uploaded_url = ""
   const fileStr = req.body.data;
-  
-  
-
-
+ 
     if (req.method === "POST") {
-       
-
-      console.log("backend received"); 
+    
+      console.log("backend received", fileStr.length); 
+      // links.push(fileStr)
+      // console.log("links", links[0])
       try {
-        
-          
-        //   const uploadedResponse = await cloudinary.uploader.upload_large(
-        //     fileStr,
-        //     {
-        //       chunk_size: 6000000,
-        //     }
-        //   );
-        //   console.log("uploaded_url", uploadedResponse.secure_url)
-        //  uploaded_url = uploadedResponse.secure_url
+         
+          const uploadedResponse = await cloudinary.uploader.upload_large(
+            fileStr,
+            {
+              chunk_size: 6000000,
+            }
+          );
+          console.log("uploaded_url", uploadedResponse.secure_url)
+         uploaded_url = uploadedResponse.secure_url
         
       } catch (error) {
         console.log("error", error);
