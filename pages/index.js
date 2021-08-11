@@ -1,3 +1,5 @@
+import React, { createRef, useState } from 'react'
+import { useScreenshot } from 'use-react-screenshot'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -6,6 +8,9 @@ import Forms from '../components/form'
 import Test from '../components/test'
 
 export default function Home() {
+  const ref = createRef(null)
+  const [image, takeScreenshot] = useScreenshot()
+  const getImage = () => takeScreenshot(ref.current)
   return (
     <div  >
       <Head>

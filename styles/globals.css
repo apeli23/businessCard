@@ -86,3 +86,8 @@ h3{
   /* border: 2px solid rgb(0, 0, 0); */
    
 }  
+#show{
+  display: none;
+  /* text-align: center;
+  right: 50; */
+}
