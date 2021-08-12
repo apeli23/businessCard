@@ -20,10 +20,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 id='title'><span> BUSINESS CARD GENERATOR</span></h1>
-      {/* <Test/> */}
+      <Test/>
       {/* <Card/> */}
       {/* <Forms/> */}
-      <GetCard/>
+      {/* <GetCard/>   */}
 
     </div>
   )

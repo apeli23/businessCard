@@ -146,7 +146,7 @@ function GetCard() {
         console.log("qrgenerate", link)
         setQRCodeText(link);
     }
-
+    
     return (
         <div>
             <div className="float-container">
@@ -156,7 +156,7 @@ function GetCard() {
                         <div className="back-header">
                             <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
                             <h1 id='subtitle'><span> Company name</span></h1>
-                        </div>
+                        </div><br/>
                         <div className="card-content">
                             <QRCode
                                 size={120}
@@ -165,30 +165,22 @@ function GetCard() {
                             <div className="details">
                                 <h3 id='span'><span> {name}</span></h3>
                                 <h3 id='span'><span> {phoneNumber}</span></h3>
-                                <h3 id='span'><span> {email}</span></h3>
-                                <h3 id='span'><span> {location}</span></h3>
+                                        <h3 id='span'><span> {email}</span></h3>
+                                        <h3 id='span'><span> {location}</span></h3>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <h1 id='subtitle'><span> create card</span></h1>
-                    <div className="card">
-                        <div className="card-header">
-                            <h1 id='subtitle'><span> Company name</span></h1>
-                            <QRCode
-                                size={100}
-                                value={qrCodeText}
-                            />
-                        </div>
+                            <h1 id='subtitle'><span> create card</span></h1>
+                            <div className="card">
                         <div className="back-content">
-                        <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
+                            <h1 id='subtitle'><span> Company name</span></h1>
+                            <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
                         </div>
 
                         <div className="card-content">
                             
                             <div className="backfooter">
-                                <h3 id='span'><span> {name}</span></h3>
                                 <h3 id='span'><span> {phoneNumber}</span></h3>
-                                <h3 id='span'><span> {email}</span></h3>
                                 <h3 id='span'><span> {location}</span></h3>
                             </div>
                         </div>
