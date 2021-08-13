@@ -16,15 +16,13 @@ export const config = {
 };
 
 export default async function handler(req,res) {
-  let links = []
   let uploaded_url = ""
   const fileStr = req.body.data;
  
     if (req.method === "POST") {
     
-      console.log("backend received", fileStr.length); 
-      // links.push(fileStr)
-      // console.log("links", links[0])
+      // console.log("backend received", fileStr.length ); 
+       
       try {
          
           const uploadedResponse = await cloudinary.uploader.upload_large(

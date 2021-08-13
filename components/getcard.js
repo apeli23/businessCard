@@ -8,252 +8,274 @@ import { useScreenshot } from 'use-react-screenshot'
 
 const useStyles = makeStyles((theme) => ({
 
-  root: {
-    margin: theme.spacing(3),
-    width: '50ch',
+    root: {
+        margin: theme.spacing(3),
+        width: '50ch',
 
-  },
-
-  tyography: {
-    width: '100%',
-    maxWidth: 500,
-    textcolor: "white",
-  },
-  button: {
-    '& > *': {
-      margin: theme.spacing(1),
     },
-  },
+
+    tyography: {
+        width: '100%',
+        maxWidth: 500,
+        textcolor: "white",
+    },
+    button: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
 
 }));
 
 
 function BuildCard() {
-  let urls = []
-  let qrlink = ""
-  let encodedImg;
-  const classes = useStyles();
-  const profileref = createRef(null)
-  const cardref = createRef(null)
+    let cardurl = []
+    let urls = []
+    let qrlink = ""
+    let encodedImg;
+    const classes = useStyles();
+    const profileref = createRef(null)
+    const cardref = createRef(null)
 
 
-  const [codeLink, setCodeLink] = useState('');
-  const [qrCodeText, setQRCodeText] = useState('');
-  const [print, setPrint] = useState(false)
-  const [name, setName] = useState(null)
-  const [email, setEmail] = useState(null)
-  const [business, setBusiness] = useState(null)
-  const [phoneNumber, setPhoneNumber] = useState(null)
-  const [location, setLocation] = useState(null)
-  const [website, setWebsite] = useState(null)
-  const [logo, setLogo] = useState(null)
-  const [link, setLink] = useState()
-  const [userprofile, takeScreenshot] = useScreenshot()
-  const [usercard, getFinalCard] = useScreenshot()
+    const [codeLink, setCodeLink] = useState('');
+    const [qrCodeText, setQRCodeText] = useState('');
+    const [print, setPrint] = useState(false)
+    const [name, setName] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [business, setBusiness] = useState(null)
+    const [phoneNumber, setPhoneNumber] = useState(null)
+    const [location, setLocation] = useState(null)
+    const [website, setWebsite] = useState(null)
+    const [logo, setLogo] = useState(null)
+    const [link, setLink] = useState()
+    const [userprofile, takeScreenshot] = useScreenshot()
+    const [usercard, getFinalCard] = useScreenshot()
 
 
 
 
 
-  const handleFileInputChange = async (e) => {
-    const files = e.target.files;
-    if (!files.length) return;
-    console.log(files)
+    const handleFileInputChange = async (e) => {
+        const files = e.target.files;
+        if (!files.length) return;
+        console.log(files)
 
-    // Store promises in array
-    for (let file of files) {
-      await readFile(file).then((encoded_file) => {
-        setLogo(encoded_file);
-      });
+        // Store promises in array
+        for (let file of files) {
+            await readFile(file).then((encoded_file) => {
+                setLogo(encoded_file);
+            });
+        }
     }
-  }
-  function readFile(file) {
-    return new Promise(function (resolve, reject) {
-      let fr = new FileReader();
+    function readFile(file) {
+        return new Promise(function (resolve, reject) {
+            let fr = new FileReader();
 
-      fr.onload = function () {
-        resolve(fr.result);
-      };
+            fr.onload = function () {
+                resolve(fr.result);
+            };
 
-      fr.onerror = function () {
-        reject(fr);
-      };
+            fr.onerror = function () {
+                reject(fr);
+            };
 
-      fr.readAsDataURL(file);
-    });
-  }
-
-  const getName = (e) => {
-    setName(e.target.value)
-  }
-  const getEmail = (e) => {
-    setEmail(e.target.value)
-  }
-  const getBusiness = (e) => {
-    setBusiness(e.target.value)
-  }
-  const getPhoneNumber = (e) => {
-    setPhoneNumber(e.target.value)
-  }
-  const getLocation = (e) => {
-    setLocation(e.target.value)
-  }
-  const getWebsite = (e) => {
-    setWebsite(e.target.value)
-
-  }
-
-  function showFunction() {
-    var x = document.getElementById("show");
-    x.style.display = "block";
-  }
-  function showgeneratedFunction() {
-    var x = document.getElementById("generated");
-    x.style.display = "flex";
-  }
-  function showgeneratedCard() {
-    var x = document.getElementById("finalcard");
-    x.style.display = "flex";
-  }
-  //get profile
-  const getProfile = () => {
-    takeScreenshot(profileref.current)
-    if(!userprofile) return
-    uploadProfile(userprofile)
-  }
-  
-  function confirmProfile(profile) {
-    console.log(profile)
-
-  }
-
-  function uploadProfile(img) {
-    // console.log(img)
-    try {
-      fetch("/api/upload", {
-        method: "POST",
-        body: JSON.stringify({ data: img}),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((response) => {
-          console.log("response",name, response )
-          response.json().then((data) => {
-            urls.push(data.data); 
-            setupQr(urls)
-          });
+            fr.readAsDataURL(file);
         });
-    } catch (error) {
-      console.error(error);
     }
-  }
-  function setupQr(link) {
-    console.log("setupQr received", link);
-    let text =link.toString()
-    console.log("link string", text)
-     
-    if(!text){
-      console.log("no link text received")
-    }else{
-      setQRCodeText(text)
+
+    const getName = (e) => {
+        setName(e.target.value)
     }
-    
-  }
+    const getEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const getBusiness = (e) => {
+        setBusiness(e.target.value)
+    }
+    const getPhoneNumber = (e) => {
+        setPhoneNumber(e.target.value)
+    }
+    const getLocation = (e) => {
+        setLocation(e.target.value)
+    }
+    const getWebsite = (e) => {
+        setWebsite(e.target.value)
+
+    }
+
+    function showFunction() {
+        var x = document.getElementById("show");
+        x.style.display = "block";
+    }
+    function showgeneratedFunction() {
+        var x = document.getElementById("generated");
+        x.style.display = "flex";
+    }
+    function showgeneratedCard() {
+        var x = document.getElementById("finalcard");
+        x.style.display = "flex";
+    }
+    //get profile
+    const getProfile = () => {
+        takeScreenshot(profileref.current)
+        if (!userprofile) return
+        uploadProfile(userprofile)
+    }
+
+    function confirmProfile(profile) {
+        console.log(profile)
+
+    }
+
+    function uploadProfile(img) {
+        // console.log(img)
+        try {
+            fetch("/api/upload", {
+                method: "POST",
+                body: JSON.stringify({ data: img }),
+                headers: { "Content-Type": "application/json" },
+            })
+                .then((response) => {
+                    console.log("response", name, response.status)
+                    response.json().then((data) => {
+                        urls.push(data.data);
+                        toStringUrl(urls)
+                    });
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    function toStringUrl(link) {
+        console.log("setupQr received", link);
+        let text = link.toString()
+        console.log("link string", text)
+
+        if (!text) {
+            console.log("no link text received")
+        } else {
+            setQRCodeText(text)
+        }
+
+    }
     //final card
-  const getCard = () => {
-    getFinalCard(cardref.current)
-     console.log( usercard)
-  }
-   
-  return (
-    <div>
-      <div className="row">
-        <div className="column">
-          <h1 id='subtitle'><span>FILL FORMS</span></h1>
-          <Typography variant="h5" gutterBottom><b>Import Logo :</b>
-            <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleFileInputChange} />
-          </Typography><br /><br />
-          <TextField label="Name" color="primary" onChange={getName} /><br/>
-          <TextField label="email" onChange={getEmail} /><br />
-          <TextField id="phone_number" label="Phone_Number" onChange={getPhoneNumber} type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          /><br />
-          <TextField label="Business" onChange={getBusiness} /><br />
-          <TextField label="Location" onChange={getLocation} /><br />
-          <TextField label="Website" onChange={getWebsite} /><br /><br />
-          <Button color="primary" variant="contained" onClick={showFunction}>Create Profile</Button><br /><br />
+    const getCard = () => {
+        getFinalCard(cardref.current)
+        uploadCard( usercard)
+    }
+    function uploadCard(card) {
+        // console.log("uploading",card)
+        try {
+            fetch("/api/upload", {
+                method: "POST",
+                body: JSON.stringify({ data: card }),
+                headers: { "Content-Type": "application/json" },
+            })
+                .then((response) => {
+                    console.log("response", name, response.status)
+                    response.json().then((data) => {
+                        cardurl.push(data.data);
+                        console.log("cardurl", cardurl)
+                    });
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
-        </div>
-        <div id="show" className="column2">
-          <div ref={cardref}  className="card-preview">
-            <div className="card">
-              <div className="back-header">
-                <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
-                <h1 id='subtitle'><span> Company name</span></h1>
-              </div><br />
-              <div className="card-content">
-                <QRCode
-                  size={120}
-                  value={qrCodeText}
-                />
-                <div className="details">
-                  <h3 id='span'><span> {name}</span></h3>
-                  <h3 id='span'><span> {phoneNumber}</span></h3>
-                  <h3 id='span'><span> {email}</span></h3>
-                  <h3 id='span'><span> {location}</span></h3>
+    return (
+        <div>
+            <div className="row">
+                <div className="column">
+                    <h1 id='subtitle'><span>FILL FORMS</span></h1>
+                    <Typography variant="h5" gutterBottom><b>Import Logo :</b>
+                        <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleFileInputChange} />
+                    </Typography><br /><br />
+                    <TextField label="Name" color="primary" onChange={getName} /><br />
+                    <TextField label="email" onChange={getEmail} /><br />
+                    <TextField id="phone_number" label="Phone_Number" onChange={getPhoneNumber} type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    /><br />
+                    <TextField label="Business" onChange={getBusiness} /><br />
+                    <TextField label="Location" onChange={getLocation} /><br />
+                    <TextField label="Website" onChange={getWebsite} /><br /><br />
+                    <Button color="primary" variant="contained" onClick={showFunction}>Create Profile</Button><br /><br />
+
                 </div>
-              </div>
+                <div id="show" className="column2">
+                    <div ref={cardref} className="card-preview">
+                        <div className="card">
+                            <div className="back-header">
+                                <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
+                                <h1 id='subtitle'><span> Company name</span></h1>
+                            </div><br />
+                            <div className="card-content">
+                                <QRCode
+                                    size={120}
+                                    value={qrCodeText}
+                                />
+                                <div className="details">
+                                    <h3 id='span'><span> {name}</span></h3>
+                                    <h3 id='span'><span> {phoneNumber}</span></h3>
+                                    <h3 id='span'><span> {email}</span></h3>
+                                    <h3 id='span'><span> {location}</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div className="card">
+                            <div className="back-content">
+                                <h1 id='subtitle'><span> Company name</span></h1>
+                                <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
+                            </div>
+
+                            <div className="card-content">
+
+                                <div className="backfooter">
+                                    <h3 id='span'><span> {phoneNumber}</span></h3>
+                                    <h3 id='span'><span> {location}</span></h3>
+                                </div>
+                            </div>
+                        </div></div><br />
+
+                    <Button color="primary" variant="contained" onClick={showgeneratedFunction}>Preview</Button>
+
+                </div>
+
             </div>
-            <br />
-
-            <div  className="card">
-              <div className="back-content">
-                <h1 id='subtitle'><span> Company name</span></h1>
-                <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
-              </div>
-
-              <div className="card-content">
-
-                <div className="backfooter">
-                  <h3 id='span'><span> {phoneNumber}</span></h3>
-                  <h3 id='span'><span> {location}</span></h3>
+            <div id="generated" className="row">
+                <div className="generatedprofile">
+                    <h1 id='subtitle'><span>Generated profile</span></h1>
+                    <div ref={profileref} className="profile">
+                        <img className="p_pic" width="150" height="150" src={logo} />
+                        <Typography variant="h5" gutterBottom  ><b>Name :</b>  {name}</Typography><br />
+                        <Typography variant="h5" gutterBottom  ><b>Email:</b> {email}</Typography><br />
+                        <Typography variant="h5" gutterBottom  ><b>Business/Company :</b> {business}</Typography><br />
+                        <Typography variant="h5" gutterBottom  ><b>Phone Number :</b> {phoneNumber}</Typography><br />
+                        <Typography variant="h5" gutterBottom  ><b>Location :</b> {location}</Typography><br />
+                        <Typography variant="h5" gutterBottom  ><b>Website :</b> {website}</Typography>
+                    </div>
+                    <Button variant="contained" color="primary" onClick={getProfile}>ACTIVATE QR to Get final card    </Button>
                 </div>
-              </div>
-            </div></div><br />
+                <div className="generatedcard">
+                    <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
+                    <img src={usercard} />
+                    <a href="https://github.com/" ><h1 id="subtitle"><span>Get_Card</span></h1></a>
+                    <Button variant="contained" color="primary" onClick={getCard} >GET CARD IMAGE URL</Button>
+                </div>
+                <br />
+            </div>
+            <div className="row">
+                <div className="finalstage">
 
-          <Button color="primary" variant="contained" onClick={showgeneratedFunction}>Preview</Button>
-
+                </div>
+            </div>
         </div>
 
-      </div>
-      <div id="generated" className="row">
-        <div className="generatedprofile">
-          <h1 id='subtitle'><span>Generated profile</span></h1>
-          <div ref={profileref} className="profile">
-            <img className="p_pic" width="150" height="150" src={logo} />
-            <Typography variant="h5" gutterBottom  ><b>Name :</b>  {name}</Typography><br />
-            <Typography variant="h5" gutterBottom  ><b>Email:</b> {email}</Typography><br />
-            <Typography variant="h5" gutterBottom  ><b>Business/Company :</b> {business}</Typography><br />
-            <Typography variant="h5" gutterBottom  ><b>Phone Number :</b> {phoneNumber}</Typography><br />
-            <Typography variant="h5" gutterBottom  ><b>Location :</b> {location}</Typography><br />
-            <Typography variant="h5" gutterBottom  ><b>Website :</b> {website}</Typography>
-          </div> 
-          <Button variant="contained" color="primary" onClick={getProfile}>ACTIVATE QR to Get final card    </Button>
-        </div>
-        <div className="generatedcard">
-        <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
-            <img src= {usercard} />
-          <Button variant="contained" color="primary" onClick={getCard} >GET CARD IMAGE URL</Button>
-        </div>
-        <br />
-      </div>
-      <div className="row">
-        <div className="finalstage">
-          
-        </div>
-      </div>
-    </div>
-
-  )
+    )
 } export default BuildCard
