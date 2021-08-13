@@ -34,6 +34,7 @@ function BuildCard() {
   let encodedImg;
   const classes = useStyles();
   const profileref = createRef(null)
+  const cardref = createRef(null)
 
 
   const [codeLink, setCodeLink] = useState('');
@@ -48,6 +49,7 @@ function BuildCard() {
   const [logo, setLogo] = useState(null)
   const [link, setLink] = useState()
   const [userprofile, takeScreenshot] = useScreenshot()
+  const [usercard, getFinalCard] = useScreenshot()
 
 
 
@@ -117,20 +119,15 @@ function BuildCard() {
   const getProfile = () => {
     takeScreenshot(profileref.current)
     if(!userprofile) return
-    uploadImage(userprofile)
+    uploadProfile(userprofile)
   }
-  //final card
-  const finalCard = () => {
-    takeScreenshot(profileref.current)
-    .then(uploadImage(userprofile))
-  }
+  
   function confirmProfile(profile) {
     console.log(profile)
 
   }
 
-  // uploadImage(image)
-  function uploadImage(img) {
+  function uploadProfile(img) {
     // console.log(img)
     try {
       fetch("/api/upload", {
@@ -150,7 +147,6 @@ function BuildCard() {
     }
   }
   function setupQr(link) {
-    var i = 0
     console.log("setupQr received", link);
     let text =link.toString()
     console.log("link string", text)
@@ -160,7 +156,12 @@ function BuildCard() {
     }else{
       setQRCodeText(text)
     }
-    console.log("qr ready")
+    
+  }
+    //final card
+  const getCard = () => {
+    getFinalCard(cardref.current)
+     console.log( usercard)
   }
    
   return (
@@ -185,7 +186,7 @@ function BuildCard() {
 
         </div>
         <div id="show" className="column2">
-          <div  className="card-preview">
+          <div ref={cardref}  className="card-preview">
             <div className="card">
               <div className="back-header">
                 <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
@@ -206,7 +207,7 @@ function BuildCard() {
             </div>
             <br />
 
-            <div className="card">
+            <div  className="card">
               <div className="back-content">
                 <h1 id='subtitle'><span> Company name</span></h1>
                 <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
@@ -241,18 +242,15 @@ function BuildCard() {
           <Button variant="contained" color="primary" onClick={getProfile}>ACTIVATE QR to Get final card    </Button>
         </div>
         <div className="generatedcard">
-          <h1 id='subtitle'><span> Generated card</span></h1>
-          <div id="finalcard">
-            <img src={userprofile} />
-          </div><br />
-
+        <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
+            <img src= {usercard} />
+          <Button variant="contained" color="primary" onClick={getCard} >GET CARD IMAGE URL</Button>
         </div>
         <br />
       </div>
       <div className="row">
         <div className="finalstage">
-          <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
-          <Button variant="contained" color="primary" >DOWNLOAD CARD</Button>
+          
         </div>
       </div>
     </div>

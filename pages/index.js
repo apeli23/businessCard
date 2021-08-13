@@ -9,6 +9,7 @@ import Test from '../components/test'
 import BuildCard from '../components/getcard'
  
 export default function Home() {
+  
   const ref = createRef(null)
   const [image, takeScreenshot] = useScreenshot()
   const getImage = () => takeScreenshot(ref.current)
@@ -20,7 +21,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 id='title'><span> BUSINESS CARD GENERATOR</span></h1>
-      <Test/>
+      {/* <Test/> */}
       {/* <Card/> */}
       {/* <Forms/> */}
       <BuildCard/>  

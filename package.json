@@ -12,6 +12,7 @@
     "@material-ui/core": "^4.12.3",
     "cloudinary": "^1.26.3",
     "dotenv": "^10.0.0",
+    "download-image": "^1.0.1",
     "html2canvas": "^1.2.1",
     "next": "11.0.1",
     "qrcode": "^1.4.4",
