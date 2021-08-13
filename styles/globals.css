@@ -28,8 +28,8 @@ body {
   
 }
 .card-preview {
-  /* border:3px solid rgb(0, 197, 164); */
-  width: 470px;
+  border:3px solid rgb(0, 197, 164);
+  width: 455px;
   align-items:center;
 }
 
@@ -99,14 +99,23 @@ padding: 10px;
   right: 50; */
 }
 .generatedcard{
-  display:none;
-  flex: 1 1 0px;
-  border: 10px ;
-  /* border:3px solid  rgb(182, 0, 0); */
- 
+  /* display:none; */
+  border:3px solid  rgb(182, 0, 0);
+  text-align: center;  ;
+  width: 500px;
+}
+.generatedprofile{
+  /* display:none; */
+  border:3px solid  rgb(182, 0, 0);
+  text-align: left;
+  width: 500px;
+  height: 100%;
+  padding: 20;
+  margin: 10;
+  
 }
 .finalstage{
-  display: none;
+  /* display: none; */
   flex: 1 1 0px;
   border: 10px ;
   /* border:3px solid  rgb(182, 0, 0); */
@@ -192,7 +201,7 @@ align-items: center;
   align-items: center;  
   display: flex;
   flex-direction:row;
-  /* border:3px solid rgb(0, 0, 0); */
+  border:3px solid rgb(0, 0, 0);
   text-align:center ;
   padding: 10px;
 }
@@ -211,4 +220,11 @@ align-items: center;
 .profile{
   align-items: left; 
   text-align: left  ;
+  border:3px solid  rgb(57, 0, 71);
+}
+#finalcard{
+  border:3px solid  rgb(3, 134, 3);
+}
+#generated{
+  display:none;
 }

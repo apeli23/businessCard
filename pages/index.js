@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 import Card from '../components/card'
 import Forms from '../components/form'
 import Test from '../components/test'
-import GetCard from '../components/getcard'
+import BuildCard from '../components/getcard'
  
 export default function Home() {
   const ref = createRef(null)
@@ -23,7 +23,7 @@ export default function Home() {
       <Test/>
       {/* <Card/> */}
       {/* <Forms/> */}
-      {/* <GetCard/>   */}
+      <BuildCard/>  
 
     </div>
   )
