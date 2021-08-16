@@ -28,7 +28,7 @@ export default async function handler(req,res) {
           const uploadedResponse = await cloudinary.uploader.upload_large(
             fileStr,
             {
-              chunk_size: 6000000,
+              upload_preset:'video_concatinator',
             }
           );
           console.log("uploaded_url", uploadedResponse.secure_url)
