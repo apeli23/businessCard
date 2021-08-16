@@ -86,7 +86,7 @@ export default function Home() {
         </div>
       </div>
       <div id="cardone">
-        {/* <BuildCard /> */}
+        <BuildCard />
       </div>
       <div id="cardtwo">
         <Buildcardtwo/>
