@@ -215,7 +215,7 @@ function Buildcardtwo() {
                 </div>
                 <div id="showcard2" className="column2">
                     <div ref={cardref} className="card-preview">
-                        <div className="card">
+                        <div className="card2">
                             <div className="back-header">
                                 <img className="p_pic" width="150" height="150" src={logo} alt="logo " />
                                 <h1 id='subtitle'><span> Company name</span></h1>
@@ -234,7 +234,7 @@ function Buildcardtwo() {
                             </div>
                         </div>
                         <br />
-                        <div className="card">
+                        <div className="card2">
                             <div className="back-content">
                                 <h1 id='subtitle'><span> Company name</span></h1>
                                 <img className="b_pic" width="150" height="150" src={logo} alt="logo " />
@@ -269,7 +269,7 @@ function Buildcardtwo() {
                 <div className="generatedcard">
                     <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
                     <img src={usercard} />
-                    <a href="https://github.com/" ><h1 id="subtitle"><span>Get_Card</span></h1></a>
+                    <a href={link}><h1 id="subtitle"><span>Get_Card</span></h1></a>
                     <Button variant="contained" color="primary" onClick={getCard} >GET CARD IMAGE URL</Button>
                 </div>
                 <br />

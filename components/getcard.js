@@ -271,7 +271,7 @@ function BuildCard() {
                 <div className="generatedcard">
                     <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
                     <img src={usercard} />
-                    <a href="https://github.com/" ><h1 id="subtitle"><span>Get_Card</span></h1></a>
+                    <a href={link} ><h1 id="subtitle"><span>Get_Card</span></h1></a>
                     <Button variant="contained" color="primary" onClick={getCard} >GET CARD IMAGE URL</Button>
                 </div>
                 <br />
