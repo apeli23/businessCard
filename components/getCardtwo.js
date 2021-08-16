@@ -28,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
-function BuildCard() {
+function Buildcardtwo() {
     let cardurl = []
     let urls = []
     const classes = useStyles();
@@ -104,7 +103,7 @@ function BuildCard() {
     }
 
     function showFunction() {
-        var x = document.getElementById("show");
+        var x = document.getElementById("showcard2");
         x.style.display = "block";
     }
 
@@ -195,6 +194,7 @@ function BuildCard() {
     }
     return (
         <div>
+            <button onClick={showFunction}>sccscscsc</button>
             <div className="row">
                 <div className="column">
                     <h1 id='subtitle'><span>FILL FORMS</span></h1>
@@ -212,9 +212,8 @@ function BuildCard() {
                     <TextField label="Location" onChange={getLocation} /><br />
                     <TextField label="Website" onChange={getWebsite} /><br /><br />
                     <Button color="primary" variant="contained" onClick={showFunction}>Create Profile</Button><br /><br />
-
                 </div>
-                <div id="show" className="column2">
+                <div id="showcard2" className="column2">
                     <div ref={cardref} className="card-preview">
                         <div className="card">
                             <div className="back-header">
@@ -235,7 +234,6 @@ function BuildCard() {
                             </div>
                         </div>
                         <br />
-
                         <div className="card">
                             <div className="back-content">
                                 <h1 id='subtitle'><span> Company name</span></h1>
@@ -277,7 +275,5 @@ function BuildCard() {
                 <br />
             </div>
         </div>
-
     )
-}
-export default BuildCard
+} export default Buildcardtwo
