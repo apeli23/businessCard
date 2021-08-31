@@ -266,13 +266,13 @@ function BuildCard() {
                         <Typography variant="h5" gutterBottom  ><b>Location :</b> {location}</Typography><br />
                         <Typography variant="h5" gutterBottom  ><b>Website :</b> {website}</Typography>
                     </div>
-                    <Button variant="contained" color="primary" onClick={getProfile}>ACTIVATE QR to Get final card    </Button>
+                    <Button variant="contained" color="primary" onClick={getProfile}>ACTIVATE QR</Button>
                 </div>
                 <div className="generatedcard">
                     <h1 id='subtitle'><span> Scan QR CODE to view profile details</span></h1><br />
                     <img src={usercard} />
-                    <a href={link} ><h1 id="subtitle"><span>Get_Card</span></h1></a>
-                    <Button variant="contained" color="primary" onClick={getCard} >GET CARD IMAGE URL</Button>
+                    <a href={link} ><h1 id="subtitle"><span>download_Card</span></h1></a>
+                    <Button variant="contained" color="primary" onClick={getCard} >Upload Card</Button>
                 </div>
                 <br />
             </div>

@@ -27,13 +27,13 @@ body {
 }
 
 .card {
-    background: url('../images/card1.jpg') no-repeat;
+    background: url('../images/card10.jpg') no-repeat;
     border: 5px solid rgb(0, 0, 0);
     padding: 5px;
     width: 450px;
 }
 .card2 {
-    background: url('../images/card2.jpg') no-repeat;
+    background: url('../images/card12.jpg') no-repeat;
     border: 5px solid rgb(0, 0, 0);
     padding: 5px;
     width: 450px;
@@ -147,11 +147,11 @@ body {
     letter-spacing: 3px;
 }
 
-#subtitle span {
-    background: -webkit-linear-gradient(rgb(46, 42, 42), #2b537a);
+/* #subtitle span {
+    background: -webkit-linear-gradient(rgb(255, 255, 255), #c5e0fc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+} */
 
 h3 {
     margin: 0;
@@ -165,12 +165,12 @@ h3 {
     font-size: 20px;
     letter-spacing: 3px;
 }
-
+/* 
 h3 span {
-    background: -webkit-linear-gradient(rgb(73, 73, 73), #232629);
+    background: -webkit-linear-gradient(rgb(255, 255, 255), #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+} */
 
 #title {
     top: 50%;
