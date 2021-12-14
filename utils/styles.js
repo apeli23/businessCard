@@ -17,7 +17,12 @@ const useStyles = makeStyles({
   },
   main: {
     minHeight: '80vh',
+    margin: 20,
+    padding:20,
   },
+  center: {
+    textAlign:'center',
+  }
 });
 
 export default useStyles;
