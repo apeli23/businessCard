@@ -10,10 +10,8 @@ export default function Layout({ children }) {
     <div>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <Link href="/">
-            <a className={classes.brand}>
-              <Typography><h1>Business_Card_Generator</h1></Typography>
-            </a>
+          <Link href="/" passHref>
+             <h1 id="brand">Business_Card_Generator</h1> 
           </Link>
         </Toolbar>
       </AppBar>

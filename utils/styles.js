@@ -22,6 +22,15 @@ const useStyles = makeStyles({
   },
   center: {
     textAlign:'center',
+  },
+  section: {
+    marginTop: 10,
+    marginBottom:10,
+    maxWidth:800,
+    },
+  form: {
+    maxWidth:700,
+    margin: '0 auto',
   }
 });
 

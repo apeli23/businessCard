@@ -21,7 +21,7 @@ export default function Home() {
   const classes = useStyles();
   return (
     <Layout>
-      <h1 id="center">Select Card Template</h1>
+      <p id="center">Select Card Template</p>
       <div id="centerContent">
         <Grid container spacing={3}>
           <Grid item md={4}>
