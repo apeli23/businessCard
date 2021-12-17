@@ -29,8 +29,21 @@ const useStyles = makeStyles({
     maxWidth:800,
     },
   form: {
-    maxWidth:700,
+    maxWidth:500,
     margin: '0 auto',
+  },
+  modal: {
+    backgroundColor: '#d4d4d4',
+    borderRadius: '0.5rem',
+    marginRight: '0.5rem',
+    fontWeight: 10,
+    marginTop: '5px',
+  },
+  imgContainer : {
+    margin: 'auto',
+  },
+  rightItems: {
+    marginLeft: '24px',
   }
 });
 
