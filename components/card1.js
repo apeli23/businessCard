@@ -15,20 +15,7 @@ import CARD1 from '../public/card1.jpg';
 export default function Card_1({ props }) {
   return (
     <div>
-      <Grid item md={4}>
-        <Card>
-          <CardActionArea>
-            <Image
-              alt="card1"
-              src={CARD1}
-              width={400}
-              height={300}
-              title="CARD 1"
-              path="/card3"
-            />
-          </CardActionArea>
-        </Card>
-      </Grid>
+      <button onClick={() => {console.log(props)}}>props</button>
     </div>
   );
 }

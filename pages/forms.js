@@ -15,6 +15,7 @@ import Modal from 'react-modal';
 import Link from 'next/link';
 import Image from 'next/image';
 import LOGO from '../public/logo.jpg';
+import Card_1 from '../components/card1';
 
 const profileStyles = {
   content: {
@@ -57,7 +58,7 @@ export default function Forms({ props }) {
   const [profile, showProfile] = useState(false);
   const [card, showCard] = useState(false);
 
-  function profileHandler(user) {
+  function profileHandler() {
     showProfile(true);
   }
 
@@ -65,10 +66,10 @@ export default function Forms({ props }) {
     showProfile(false);
   }
 
-  function cardHandler(user) {
+  function cardHandler( ) {
     showCard(true);
   }
-
+  
   function closeCard() {
     showCard(false);
   }
@@ -218,21 +219,21 @@ export default function Forms({ props }) {
               <div className={classes.rightItems}>
                 <Typography>
                   <h3>NAME :</h3>
-                  {name ? name : ` missing`}
+                  {name ? name : `missing`}
                 </Typography>
                 <Typography>
-                  <h3>Company/Business :</h3> {brand ? brand : ` missing`}
+                  <h3>Company/Business :</h3> {brand ? brand : `missing`}
                 </Typography>
                 <Typography>
                   <h3>EMAIL : </h3>
-                  {email ? email : ` missing`}
+                  {email ? email : `missing`}
                 </Typography>
                 <Typography>
                   <h3>PHONE NUMBER :</h3>{' '}
-                  {phonenumber ? phonenumber : ` missing`}
+                  {phonenumber ? phonenumber : `missing`}
                 </Typography>
                 <Typography>
-                  <h3>Location :</h3> {location ? location : ` missing`}
+                  <h3>Location :</h3> {location ? location : `missing`}
                 </Typography>
               </div>
             </div>
@@ -255,7 +256,9 @@ export default function Forms({ props }) {
           style={cardStyles}
           contentLabel="Card Modal"
           ariaHideApp={false}
-        ></Modal>
+        >
+           
+        </Modal>
       </>
     </Layout>
   );
