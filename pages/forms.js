@@ -15,7 +15,7 @@ import Modal from 'react-modal';
 import Link from 'next/link';
 import Image from 'next/image';
 import LOGO from '../public/logo.jpg';
-import Card_1 from '../components/card1';
+// import Card_1 from '../components/card1';
 
 const profileStyles = {
   content: {

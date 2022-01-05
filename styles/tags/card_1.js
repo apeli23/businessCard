@@ -1,25 +1,19 @@
 import styled from '@emotion/styled';
-
-export const Container = styled.div`
-  border: 3px solid black;
-  height: 100%
-  display: flex;
-`;
-export const Card1 = styled.div`
+ 
+export const Card = styled.div`
   color: #fff;
-  margin-left: 5%;
-  display: flex;
+  // margin-left: 1%;
 `;
 
 export const Front = styled.div`
-  margin-left: 5%;
+  margin-left: 10%;
   width: 390px;
   height: 220px;
   display: grid;
   grid-template-columns: 2% 96% 2%;
   grid-template-rows: 4% 92% 4%;
   position: relative;
-  margin: 20px auto;
+  margin: 10px auto;
   overflow: hidden;
   box-shadow: 2px 5px 15px 0px #17161694;
   background-color: #122529;
@@ -36,6 +30,7 @@ export const ColorGrid = styled.div`
 `;
 
 export const Black = styled.div`
+  margin-left: 30%;
   background-color: #343536;
   grid-column: 2 / span 2;
   grid-row: 1 / span 3;
