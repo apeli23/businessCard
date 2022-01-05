@@ -10,12 +10,15 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@fontsource/open-sans": "^4.5.2",
     "@material-ui/core": "^4.12.3",
     "@mui/material": "^5.2.4",
+    "font-list": "^1.4.3",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.22.0",
+    "react-icons": "^4.3.1",
     "react-modal": "^3.14.4"
   },
   "devDependencies": {

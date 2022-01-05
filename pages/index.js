@@ -1,67 +1,77 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
 import Layout from '../components/Layout';
-import Card_1 from '../components/card1';
-import CARD1 from '../public/card1.jpg';
-import CARD2 from '../public/card2.jpg';
-import CARD3 from '../public/card3.jpg';
 import useStyles from '../utils/styles';
 import {
-  Grid,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Typography,
-  Button,
-} from '@material-ui/core';
+  Container,
+  Back,
+  ColorGrid,
+  Red1,
+  Red2,
+  Green,
+  Black,
+  InfoGrid,
+  Name,
+  Brand,
+  Card1,
+  Adress,
+  Icon,
+  Text,
+  PhoneNumber,
+  Email,
+  Front,
+  NameTag,
+  TextLg,
+  TextSm
+} from '../tags/card_1';
+import { FaLaptop, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 export default function Home() {
   const classes = useStyles();
+
   return (
     <Layout>
       <p id="center">Select Card Template</p>
-      <div id="centerContent">
-        <Grid container spacing={3}>
-          
-          <Link href="/forms" passHref>
-            <Card_1 path="/card1" />
-          </Link>
-          <Grid item md={4}>
-            <Card>
-              <Link href="/forms" passHref>
-                <CardActionArea>
-                  <Image
-                    alt="card1"
-                    src={CARD2}
-                    width={400}
-                    height={300}
-                    title="CARD 2"
-                    path="/card3"
-                  />
-                </CardActionArea>
-              </Link>
-            </Card>
-          </Grid>
-          <Grid item md={4}>
-            <Card>
-              <Link href="/forms" passHref>
-                <CardActionArea>
-                  <Image
-                    alt="card1"
-                    src={CARD3}
-                    width={400}
-                    height={300}
-                    title="CARD 3"
-                    path="/card3"
-                  />
-                </CardActionArea>
-              </Link>
-            </Card>
-          </Grid>
-        </Grid>
-      </div>
+      <Container>
+        <Card1>
+          <Front>
+            <ColorGrid>
+              <Black />
+              <Red1 />
+              <Red2 />
+              <Green />
+            </ColorGrid>
+            <InfoGrid>
+              <Name>Name</Name>
+              <Brand>Brand / company name</Brand>
+              <Adress>
+                <FaMapMarkerAlt id="icon" />
+                <Text>Location</Text>
+              </Adress>
+              <PhoneNumber>
+                <FaPhone />
+                <Text>0700000000</Text>
+              </PhoneNumber>
+              <Email>
+                <FaLaptop />
+                <Text>user@example.com</Text>
+                <Text>www.yourwebsite.com</Text>
+              </Email>
+            </InfoGrid>
+          </Front>
+          <Back>
+            <ColorGrid>
+              <Black />
+              <Red1 />
+              <Red2 />
+              <Green />
+            </ColorGrid>
+            <NameTag>
+              <TextLg>Your Name</TextLg>
+              <TextSm>Company / Brand name</TextSm>
+            </NameTag>
+          </Back>
+        </Card1>
+        
+      </Container>
     </Layout>
   );
 }
