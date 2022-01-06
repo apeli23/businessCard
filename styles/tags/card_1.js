@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Card = styled.div`
   color: #fff;
   // margin-left: 1%;
+  
 `;
 
 export const Front = styled.div`
@@ -17,6 +18,9 @@ export const Front = styled.div`
   overflow: hidden;
   box-shadow: 2px 5px 15px 0px #17161694;
   background-color: #122529;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const ColorGrid = styled.div`
@@ -123,6 +127,9 @@ export const Back = styled.div`
   overflow: hidden;
   box-shadow: 2px 5px 15px 0px #17161694;
   background-color: #122529;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const NameTag = styled.div`

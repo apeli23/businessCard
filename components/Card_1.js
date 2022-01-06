@@ -21,9 +21,8 @@ import {
 import { FaLaptop, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 
-export default function Card_1({ name }) {
-  console.log("cardone",name)
-  return (
+export default function Card_1({ props }) {
+    return (
     <Card>
       <Front>
         <ColorGrid>
@@ -33,20 +32,20 @@ export default function Card_1({ name }) {
           <Green />
         </ColorGrid>
         <InfoGrid>
-          <Name>Name</Name>
-          <Brand>Brand / company name</Brand>
+          <Name>{props?.name? props.name : "Your Name"}</Name>
+          <Brand>{props?.brand? props.brand : "Company / Brand Name"}</Brand>
           <Adress>
             <FaMapMarkerAlt id="icon" />
-            <Text>Location</Text>
+            <Text>{props?.location? props.location : "Location"}</Text>
           </Adress>
           <PhoneNumber>
             <FaPhone />
-            <Text>0700000000</Text>
+            <Text>{props?.phonenumber? props.phonenumber : "0700000000"}</Text>
           </PhoneNumber>
           <Email>
             <FaLaptop />
-            <Text>user@example.com</Text>
-            <Text>www.yourwebsite.com</Text>
+            <Text>{props?.email   ? props.email : "user@example.com"}</Text>
+            <Text>{props?.website ? props.website : "website"}</Text>
           </Email>
         </InfoGrid>
       </Front>
@@ -58,8 +57,8 @@ export default function Card_1({ name }) {
           <Green />
         </ColorGrid>
         <NameTag>
-          <TextLg>Your Name</TextLg>
-          <TextSm>Company / Brand name</TextSm>
+          <TextLg>{props?.name? props.name : "Your Name"}</TextLg>
+          <TextSm>{props?.brand? props.brand : "Company / Brand name" }</TextSm>
         </NameTag>
       </Back>
     </Card>

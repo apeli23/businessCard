@@ -1,28 +1,24 @@
 import styled from '@emotion/styled';
 
-// export const Card = styled.div`
-//   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-//   display: grid;
-//   font-family: 'Trebuchet MS', sans-serif;
-//   height: 200px;
-//   width: 350px;
-// `;
 
 export const Card = styled.div`
   margin: 1%;
+  font-family: 'Trebuchet MS', sans-serif;
 `;
 
 export const Front = styled.div`
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   display: grid;
-  font-family: 'Trebuchet MS', sans-serif;
   width: 390px;
   height: 220px;
   margin-left: 6%;
-  // border: 5px solid black;
+  margin-top: 2%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const Blue = styled.div`
@@ -93,6 +89,9 @@ export const Back = styled.div`
   grid-template-rows: repeat(12, 1fr);
   height: 215px;
   width: 100%;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const BackYellow = styled.div`
