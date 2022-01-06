@@ -20,7 +20,9 @@ import {
 } from '../styles/tags/card_1';
 import { FaLaptop, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
-export default function Card_1({ props }) {
+
+export default function Card_1({ name }) {
+  console.log("cardone",name)
   return (
     <Card>
       <Front>
