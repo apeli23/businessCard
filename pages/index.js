@@ -4,32 +4,48 @@ import Card_1 from '../components/Card_1';
 import Card_2 from '../components/Card_2';
 import Modal from 'react-modal';
 import TextField from '@mui/material/TextField';
-import { Typography, List, ListItem, Button } from '@material-ui/core';
-import { Form, Container, customStyles, Title} from '../styles/tags';
- 
+import { Typography, List, ListItem } from '@material-ui/core';
+import {
+  Form,
+  Container,
+  customStyles,
+  Title,
+  Button,
+  Status,
+} from '../styles/tags';
+import { useScreenshot } from 'use-react-screenshot';
+
 export default function Home() {
-  let props = {}
+  let props = {};
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phonenumber, setPhoneNumber] = useState('');
   const [location, setLocation] = useState('');
   const [website, setWebsite] = useState('');
   const [brand, setBrand] = useState('');
-  const [address, setAddress] = useState('')
-  
+  const [address, setAddress] = useState('');
+  const [link, setLink] = useState();
+  const [template, setTemplate] = useState();
+
   const [selectcard1, setSelectCard1] = useState(false);
   const [selectcard2, setSelectCard2] = useState(false);
 
+  const card_1Ref = useRef();
+  const card_2Ref = useRef();
+
+  const [cards, takeScreenshot] = useScreenshot();
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
- props = {name, brand, email, phonenumber, location, website, address}
+  props = { name, brand, email, phonenumber, location, website, address };
 
-  function card1Handler() {
-    setIsOpen(true);  
-    setSelectCard1(true); 
+  function template1Handler() {
+    setIsOpen(true);
+    setSelectCard1(true);
+    setTemplate(card_1Ref.current);
   }
 
-  function card2Handler() {
+  function template2Handler() {
     setIsOpen(true);
     setSelectCard2(true);
   }
@@ -38,28 +54,53 @@ export default function Home() {
     setIsOpen(false);
   }
 
+  function cardHandler() {
+    takeScreenshot(template).then(uploadHandler(cards));
+  }
+
+  function uploadHandler(card) {
+    try {
+      fetch('/api/upload', {
+        method: 'POST',
+        body: JSON.stringify({ data: card }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setLink(data.data);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <Layout>
-      <Title>Pick a Template</Title><br />
+      <Title>Pick a Template</Title>
+      <br />
       <Container>
-        <div onClick={card1Handler}>
+        {link ? <Status>Link: {link}</Status> : ''}
+        <div onClick={template1Handler} ref={card_1Ref}>
           {selectcard2 ? (
             ''
           ) : (
-            <Card_1
-              props = {props} 
-            />
+            <>
+              <Card_1 props={props}  />
+              <Button onClick={cardHandler}>Upload</Button>
+            </>
           )}
         </div>
-        <div onClick={card2Handler}>
+        <div onClick={template2Handler}>
           {selectcard1 ? (
             ''
           ) : (
-            <Card_2
-              props={props}
-            />
+            <>
+              <Card_2 props={props} ref={card_2Ref} />
+              <Button onClick={cardHandler}>Upload</Button>
+            </>
           )}
         </div>
+        <br />
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
@@ -158,12 +199,7 @@ export default function Home() {
                 />
               </ListItem>
               <ListItem>
-                <Button
-                  variant="contained"
-                  fullWidth
-                  color="primary"
-                  onClick={closeModal}
-                >
+                <Button fullWidth onClick={closeModal}>
                   Submit
                 </Button>
               </ListItem>

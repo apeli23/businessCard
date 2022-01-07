@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import {
   Card,
   Back,
@@ -17,50 +18,57 @@ import {
   NameTag,
   TextLg,
   TextSm,
+  Button,
+  Status,
 } from '../styles/tags/card_1';
 import { FaLaptop, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
-
 export default function Card_1({ props }) {
-    return (
-    <Card>
-      <Front>
-        <ColorGrid>
-          <Black />
-          <Red1 />
-          <Red2 />
-          <Green />
-        </ColorGrid>
-        <InfoGrid>
-          <Name>{props?.name? props.name : "Your Name"}</Name>
-          <Brand>{props?.brand? props.brand : "Company / Brand Name"}</Brand>
-          <Adress>
-            <FaMapMarkerAlt id="icon" />
-            <Text>{props?.location? props.location : "Location"}</Text>
-          </Adress>
-          <PhoneNumber>
-            <FaPhone />
-            <Text>{props?.phonenumber? props.phonenumber : "0700000000"}</Text>
-          </PhoneNumber>
-          <Email>
-            <FaLaptop />
-            <Text>{props?.email   ? props.email : "user@example.com"}</Text>
-            <Text>{props?.website ? props.website : "website"}</Text>
-          </Email>
-        </InfoGrid>
-      </Front>
-      <Back>
-        <ColorGrid>
-          <Black />
-          <Red1 />
-          <Red2 />
-          <Green />
-        </ColorGrid>
-        <NameTag>
-          <TextLg>{props?.name? props.name : "Your Name"}</TextLg>
-          <TextSm>{props?.brand? props.brand : "Company / Brand name" }</TextSm>
-        </NameTag>
-      </Back>
-    </Card>
+  return (
+    <>
+      <Card>
+        <Front>
+          <ColorGrid>
+            <Black />
+            <Red1 />
+            <Red2 />
+            <Green />
+          </ColorGrid>
+          <InfoGrid>
+            <Name>{props?.name ? props.name : 'Your Name'}</Name>
+            <Brand>{props?.brand ? props.brand : 'Company / Brand Name'}</Brand>
+            <Adress>
+              <FaMapMarkerAlt id="icon" />
+              <Text>{props?.location ? props.location : 'Location'}</Text>
+            </Adress>
+            <PhoneNumber>
+              <FaPhone />
+              <Text>
+                {props?.phonenumber ? props.phonenumber : '0700000000'}
+              </Text>
+            </PhoneNumber>
+            <Email>
+              <FaLaptop />
+              <Text>{props?.email ? props.email : 'user@example.com'}</Text>
+              <Text>{props?.website ? props.website : 'website'}</Text>
+            </Email>
+          </InfoGrid>
+        </Front>
+        <Back>
+          <ColorGrid>
+            <Black />
+            <Red1 />
+            <Red2 />
+            <Green />
+          </ColorGrid>
+          <NameTag>
+            <TextLg>{props?.name ? props.name : 'Your Name'}</TextLg>
+            <TextSm>
+              {props?.brand ? props.brand : 'Company / Brand name'}
+            </TextSm>
+          </NameTag>
+        </Back>
+      </Card>
+    </>
   );
 }

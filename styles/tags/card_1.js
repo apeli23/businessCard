@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
- 
+
 export const Card = styled.div`
   color: #fff;
   // margin-left: 1%;
-  
 `;
 
 export const Front = styled.div`
@@ -161,4 +160,29 @@ export const TextSm = styled.p`
   font-weight: 100px;
   font-size: 15px;
   font-family: 'Heebo', sans-serif;
+`;
+
+export const Button = styled.button`
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 0.7rem;
+  color: white;
+  border:0px;
+  font-weight: bold;
+  margin: 10px;
+  padding: 1em 3em;
+  background-size: 300% 300%;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #f50057;
+	}
+`;
+
+export const Status = styled.div`
+  background-color: #d4d4d4;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  font-weight: 10;
+  color: black;
 `;
