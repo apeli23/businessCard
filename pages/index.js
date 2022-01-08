@@ -5,15 +5,18 @@ import Card_2 from '../components/Card_2';
 import Modal from 'react-modal';
 import TextField from '@mui/material/TextField';
 import { Typography, List, ListItem } from '@material-ui/core';
-import {
-  Form,
-  Container,
-  customStyles,
-  Title,
-  Button,
-  Status,
-} from '../styles/tags';
 import { useScreenshot } from 'use-react-screenshot';
+
+export const customStyles = {
+  content: {
+    top: '50%',
+    left: '75%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 export default function Home() {
   let props = {};
@@ -76,17 +79,17 @@ export default function Home() {
 
   return (
     <Layout>
-      <Title>Pick a Template</Title>
+      <h2 className="title">Pick a Template</h2>
       <br />
-      <Container>
-        {link ? <Status>Link: {link}</Status> : ''}
+      <div className="container">
+        {link ? <div className="status">Link: {link}</div> : ''}
         <div onClick={template1Handler} ref={card_1Ref}>
           {selectcard2 ? (
             ''
           ) : (
             <>
-              <Card_1 props={props}  />
-              <Button onClick={cardHandler}>Upload</Button>
+              <Card_1 props={props} />
+            
             </>
           )}
         </div>
@@ -96,7 +99,7 @@ export default function Home() {
           ) : (
             <>
               <Card_2 props={props} ref={card_2Ref} />
-              <Button onClick={cardHandler}>Upload</Button>
+              
             </>
           )}
         </div>
@@ -108,7 +111,7 @@ export default function Home() {
           contentLabel="Example Modal"
           ariaHideApp={false}
         >
-          <Form>
+          <form className="form">
             <List>
               <Typography component="h3" variant="h3">
                 Fill Form
@@ -199,14 +202,14 @@ export default function Home() {
                 />
               </ListItem>
               <ListItem>
-                <Button fullWidth onClick={closeModal}>
+                <button className="button" fullWidth onClick={closeModal}>
                   Submit
-                </Button>
+                </button>
               </ListItem>
             </List>
-          </Form>
+          </form>
         </Modal>
-      </Container>
+      </div>
     </Layout>
   );
 }

@@ -1,0 +1,141 @@
+.card {
+    color: #FFF;
+    flex-wrap: wrap;
+    font-family: 'Heebo', sans-serif;
+}
+
+.front,
+.back {
+    width: 390px;
+    height: 220px;
+    display: grid;
+    grid-template-columns: 2% 96% 2%;
+    grid-template-rows: 4% 92% 4%;
+    position: relative;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: 2px 5px 15px 0px #17161694;
+    background-color: #122529;
+}
+
+.colorGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(8, 50px);
+    grid-gap: 8px;
+    width: 150px;
+    height: 400px;
+    transform: rotate(-45deg);
+}
+
+.black {
+    background-color: #343536;
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 3;
+}
+
+.red1 {
+    background-color: #e45e4f;
+    grid-row: 2 / span 5;
+}
+
+.red2 {
+    background-color: #e45e4f;
+    grid-column: 2 / span 2;
+    grid-row: 4/7;
+}
+
+.green {
+    background-color: #007e67;
+    grid-column: 2/4;
+    grid-row: 7/9;
+}
+
+.infoGrid {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.363);
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.432);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    display: grid;
+    grid-template-columns: 15px repeat(3, 1fr) 15px;
+    grid-template-rows: repeat(3, 1fr);
+    line-height: 1px;
+}
+
+.name {
+    display: grid;
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 1;
+    font-size: 1.2em;
+    letter-spacing: .1rem;
+    margin-top: 8px;
+}
+
+.name h5 {
+    font-weight: unset;
+}
+
+.brand {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 1;
+    font-size: 1.2em;
+    letter-spacing: 0.1rem;
+    margin-top: 15%;
+}
+
+.address {
+    grid-column: 2 / span 2;
+    grid-row: 3;
+}
+
+.phonenumber {
+    margin-top: 14%;
+    grid-column: 3 / span 2 ;
+    grid-row: 2;
+    text-align: end;
+}
+
+.mailname {
+    grid-column: 3 / span 2;
+    grid-row: 3;
+    text-align: end;
+    font-size: 1.1em;
+}
+
+.text {
+    font-size: 1.2em;
+    letter-spacing: 0.1rem;
+}
+
+.back .name {
+    grid-column: 1 / span 4;
+    grid-row: 2 / span 1;
+    align-self: center;
+    z-index: 2;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.363);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.288);
+    font-size: 0.6rem;
+    letter-spacing: .1rem;
+    text-align: center;
+}
+
+.name h1 {
+    font-family: 'Heebo', sans-serif;
+    margin: 2px;
+    font-weight: unset;
+}
+
+.name_tag h {
+    margin: 2px;
+    font-weight: unset;
+}

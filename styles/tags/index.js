@@ -16,7 +16,7 @@ export const Title = styled.h2`
   margin-left: 35%;
 `;
 export const Form = styled.div`
-    max-width: 100%
+    max-width: 100%;
     margin: 0 auto;
 `;
 

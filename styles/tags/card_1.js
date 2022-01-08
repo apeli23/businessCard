@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Card = styled.div`
   color: #fff;
-  // margin-left: 1%;
 `;
 
 export const Front = styled.div`

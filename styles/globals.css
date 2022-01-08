@@ -8,4 +8,48 @@ body {
   box-sizing: border-box;
 }
 
- 
+.form {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  margin-left: 10%;
+  margin-top: 9%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.title {
+  position: absolute;
+  top: 6%;
+  font-size: 40px;
+  align-items: center;
+  font-family: 'Lora', serif;
+  color: #444;
+  margin-left: 35%;
+}
+
+.button {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 0.7rem;
+  color: white;
+  border: 0px;
+  font-weight: bold;
+  margin: 10px;
+  padding: 1em 3em;
+  background-size: 300% 300%;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #f50057;
+}
+
+.status {
+  background-color: #d4d4d4;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  font-weight: 10;
+  color: black;
+}
