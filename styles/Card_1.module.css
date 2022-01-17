@@ -27,6 +27,11 @@
     height: 400px;
     transform: rotate(-45deg);
 }
+#frontgrid {
+    display: grid;
+    width: 150px;
+    height: 400px;
+}
 
 .black {
     background-color: #343536;

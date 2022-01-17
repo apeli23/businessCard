@@ -53,3 +53,29 @@ body {
   font-weight: 10;
   color: black;
 }
+
+#colorgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(8, 50px);
+  grid-gap: 8px;
+  /* width: 150px; */
+  /* height: 400px; */
+  /* transform: rotate(-45deg); */
+}
+
+#frontgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(8, 50px);
+  grid-gap: 8px;
+   width: 150px;
+  height: 400px;
+  transform: rotate(-45deg);
+}
+
+.forms {
+  margin-left: 10%;
+  display:flex;
+  flex-wrap: wrap;
+}

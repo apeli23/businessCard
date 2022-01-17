@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import Layout from '../components/Layout';
 import Card_1 from '../components/Card_1';
 import Card_2 from '../components/Card_2';
+import Forms from '../components/Forms';
 import Modal from 'react-modal';
 import TextField from '@mui/material/TextField';
 import { Typography, List, ListItem } from '@material-ui/core';
@@ -29,6 +30,7 @@ export default function Home() {
   const [address, setAddress] = useState('');
   const [link, setLink] = useState();
   const [template, setTemplate] = useState();
+  const [form, setForm] = useState(false);
 
   const [selectcard1, setSelectCard1] = useState(false);
   const [selectcard2, setSelectCard2] = useState(false);
@@ -57,9 +59,9 @@ export default function Home() {
     setIsOpen(false);
   }
 
-  function cardHandler() {
-    takeScreenshot(template).then(uploadHandler(cards));
-  }
+  // function cardHandler() {
+  //   takeScreenshot(template).then(uploadHandler(cards));
+  // }
 
   function uploadHandler(card) {
     try {
@@ -84,131 +86,9 @@ export default function Home() {
       <div className="container">
         {link ? <div className="status">Link: {link}</div> : ''}
         <div onClick={template1Handler} ref={card_1Ref}>
-          {selectcard2 ? (
-            ''
-          ) : (
-            <>
-              <Card_1 props={props} />
-            
-            </>
-          )}
+          <Card_1 />
         </div>
-        <div onClick={template2Handler}>
-          {selectcard1 ? (
-            ''
-          ) : (
-            <>
-              <Card_2 props={props} ref={card_2Ref} />
-              
-            </>
-          )}
-        </div>
-        <br />
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-          ariaHideApp={false}
-        >
-          <form className="form">
-            <List>
-              <Typography component="h3" variant="h3">
-                Fill Form
-              </Typography>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="name"
-                  label="Full Name"
-                  defaultValue=""
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="brandname"
-                  label="Company/Business Name"
-                  defaultValue=""
-                  onChange={(e) => {
-                    setBrand(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  id="phonenumber"
-                  label="Phone Number"
-                  type="number"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  onChange={(e) => {
-                    setPhoneNumber(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="email"
-                  label="Email"
-                  defaultValue=""
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="address"
-                  label="Address"
-                  defaultValue=""
-                  onChange={(e) => {
-                    setAddress(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="location"
-                  label="Location"
-                  defaultValue=""
-                  onChange={(e) => {
-                    setLocation(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="website"
-                  label="Website"
-                  defaultValue="website"
-                  onChange={(e) => {
-                    setWebsite(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <button className="button" fullWidth onClick={closeModal}>
-                  Submit
-                </button>
-              </ListItem>
-            </List>
-          </form>
-        </Modal>
+        <div className="forms"><Forms /></div>
       </div>
     </Layout>
   );
