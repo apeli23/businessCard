@@ -1,19 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import Card_1 from '../components/Card_1';
 import Card_2 from '../components/Card_2';
-import Modal from 'react-modal';
-import TextField from '@mui/material/TextField';
-import { Typography, List, ListItem } from '@material-ui/core';
-import {
-  Form,
-  Container,
-  customStyles,
-  Title,
-  Button,
-  Status,
-} from '../styles/tags';
-import { useScreenshot } from 'use-react-screenshot';
+import { Container, Form, Title } from '../styles/tags';
+import { FormContainer, Input, Inputs, Label } from '../styles/tags/form';
+import { Button } from '../styles/tags/card_1';
 
 export default function Home() {
   let props = {};
@@ -23,55 +14,22 @@ export default function Home() {
   const [location, setLocation] = useState('');
   const [website, setWebsite] = useState('');
   const [brand, setBrand] = useState('');
-  const [address, setAddress] = useState('');
-  const [link, setLink] = useState();
-  const [template, setTemplate] = useState();
+
+  const [form, showForm] = useState(false);
 
   const [selectcard1, setSelectCard1] = useState(false);
   const [selectcard2, setSelectCard2] = useState(false);
 
-  const card_1Ref = useRef();
-  const card_2Ref = useRef();
-
-  const [cards, takeScreenshot] = useScreenshot();
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  props = { name, brand, email, phonenumber, location, website, address };
+  props = { name, brand, email, phonenumber, location, website };
 
   function template1Handler() {
-    setIsOpen(true);
+    showForm(true);
     setSelectCard1(true);
-    setTemplate(card_1Ref.current);
   }
 
   function template2Handler() {
-    setIsOpen(true);
+    showForm(true);
     setSelectCard2(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function cardHandler() {
-    takeScreenshot(template).then(uploadHandler(cards));
-  }
-
-  function uploadHandler(card) {
-    try {
-      fetch('/api/upload', {
-        method: 'POST',
-        body: JSON.stringify({ data: card }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setLink(data.data);
-        });
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   return (
@@ -79,14 +37,12 @@ export default function Home() {
       <Title>Pick a Template</Title>
       <br />
       <Container>
-        {link ? <Status>Link: {link}</Status> : ''}
-        <div onClick={template1Handler} ref={card_1Ref}>
+        <div onClick={template1Handler}>
           {selectcard2 ? (
             ''
           ) : (
             <>
-              <Card_1 props={props}  />
-              <Button onClick={cardHandler}>Upload</Button>
+              <Card_1 props={props} />
             </>
           )}
         </div>
@@ -95,117 +51,77 @@ export default function Home() {
             ''
           ) : (
             <>
-              <Card_2 props={props} ref={card_2Ref} />
-              <Button onClick={cardHandler}>Upload</Button>
+              <Card_2 props={props} />
             </>
           )}
         </div>
-        <br />
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-          ariaHideApp={false}
-        >
+        {form ? (
           <Form>
-            <List>
-              <Typography component="h3" variant="h3">
-                Fill Form
-              </Typography>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
+            <FormContainer>
+              <Inputs>
+                <Label>Name</Label>
+                <Input
                   id="name"
-                  label="Full Name"
-                  defaultValue=""
+                  placeholder="Full Name"
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
                 />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
+                <Label>Company / Business Name</Label>
+                <Input
                   id="brandname"
-                  label="Company/Business Name"
-                  defaultValue=""
+                  placeholder="company / breand /name"
                   onChange={(e) => {
                     setBrand(e.target.value);
                   }}
                 />
-              </ListItem>
-              <ListItem>
-                <TextField
+                <Label>Phone Number</Label>
+                <Input
                   id="phonenumber"
-                  label="Phone Number"
-                  type="number"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+                  placeholder="070000000"
                   onChange={(e) => {
                     setPhoneNumber(e.target.value);
                   }}
                 />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
+                <Label>EMAIL</Label>
+                <Input
                   id="email"
-                  label="Email"
-                  defaultValue=""
+                  placeholder="example@test.com"
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
                 />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
-                  id="address"
-                  label="Address"
-                  defaultValue=""
-                  onChange={(e) => {
-                    setAddress(e.target.value);
-                  }}
-                />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
+                <Label >Location</Label>
+                <Input
                   id="location"
-                  label="Location"
-                  defaultValue=""
+                  type="location"
+                  placeholder="location"
                   onChange={(e) => {
                     setLocation(e.target.value);
                   }}
                 />
-              </ListItem>
-              <ListItem>
-                <TextField
-                  fullWidth
-                  required
+                <Label >Website</Label>
+                <Input
                   id="website"
-                  label="Website"
-                  defaultValue="website"
+                  type="website"
+                  placeholder="website"
                   onChange={(e) => {
                     setWebsite(e.target.value);
                   }}
                 />
-              </ListItem>
-              <ListItem>
-                <Button fullWidth onClick={closeModal}>
+                <Button
+                  onClick={() => {
+                    showForm(false);
+                  }}
+                >
                   Submit
                 </Button>
-              </ListItem>
-            </List>
+              </Inputs>
+            </FormContainer>
           </Form>
-        </Modal>
+        ) : (
+          ''
+        )}
       </Container>
     </Layout>
   );

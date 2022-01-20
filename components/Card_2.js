@@ -38,7 +38,6 @@ export default function Card_2({ props}) {
           <BackName>{props?.name? props.name : "Your Name"}</BackName>
           <BackBrand>{props?.brand ? props.brand : "Company / Brand Name"}</BackBrand>
           <BackText>  
-            {props?.address? props.address : "address"} <br />
             {props?.location? props.location : "location"} <br />
             {props?.phonenumber? props.phonenumber : "0700000000"}<br />
             {props?.website? props.website : "website"} <br />

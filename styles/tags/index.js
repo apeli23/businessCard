@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   margin-left: 10%;
+  margin-right: 10%;
   margin-top: 9%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 `;
 export const Title = styled.h2`
   position: absolute;
@@ -17,7 +19,7 @@ export const Title = styled.h2`
 `;
 export const Form = styled.div`
     max-width: 100%
-    margin: 0 auto;
+    margin: 10%;
 `;
 
 export const customStyles = {
