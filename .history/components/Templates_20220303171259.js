@@ -1,0 +1,7 @@
+function Templates({selectedcanvas}){
+    return(
+        <>
+        
+        </>
+    )
+}

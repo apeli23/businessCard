@@ -1,0 +1,7 @@
+function Templates({selectedC}){
+    return(
+        <>
+        
+        </>
+    )
+}
