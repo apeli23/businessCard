@@ -1,4 +1,4 @@
-import { Container, Templates, Text, Title, TitleContainer } from "../styles/emotion";
+import { Container, Text, Title, TitleContainer } from "../styles/emotion";
 
 export default function Home() {
   return (
@@ -8,9 +8,7 @@ export default function Home() {
       </TitleContainer>
       <Container>
         <Text>Select Design </Text>
-        <Templates>
-          sdsd
-        </Templates>
+        <Te>
       </Container>
     </>
   )

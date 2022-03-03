@@ -8,9 +8,7 @@ export default function Home() {
       </TitleContainer>
       <Container>
         <Text>Select Design </Text>
-        <Templates>
-          sdsd
-        </Templates>
+        <Templates></Templates>>
       </Container>
     </>
   )

@@ -1,4 +1,4 @@
-import { Container, Templates, Text, Title, TitleContainer } from "../styles/emotion";
+import { Container, Title, TitleContainer } from "../styles/emotion";
 
 export default function Home() {
   return (
@@ -7,10 +7,7 @@ export default function Home() {
         <Title>Design Business card with Nextjs and Emotion css</Title>
       </TitleContainer>
       <Container>
-        <Text>Select Design </Text>
-        <Templates>
-          sdsd
-        </Templates>
+        <Text>
       </Container>
     </>
   )

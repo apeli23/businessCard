@@ -7,7 +7,7 @@ export default function Home() {
         <Title>Design Business card with Nextjs and Emotion css</Title>
       </TitleContainer>
       <Container>
-        <Text>Select Design </Text>
+        Select Design  
         <Templates>
           sdsd
         </Templates>
