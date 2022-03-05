@@ -1,7 +1,7 @@
 
 import { forwardRef, useState, createRef, useEffect, useRef } from 'react';
 import UserDetails from '../components/UserDetails';
-import { Black, Button, Details, FormContainer, Input, Inputs, Label, Blue, Card, Card_1, Card_2, ColorGrid, Container, Dots, Green, Pink, Red1, Red2, Templates, Text, Title, TitleContainer, Yellow, FinalCardContainer, Front, InfoGrid, NameTag, Back, Name, Brand, CardText, Address, PhoneNumber, Email, TextLg, TextSm, UploadButto, Backn, UploadButton } from "../styles/emotion";
+import { Black, Button, Details, FormContainer, Input, Inputs, Label, Blue, Card, Card_1, Card_2, ColorGrid, Container, Dots, Green, Pink, Red1, Red2, Templates, Text, Title, TitleContainer, Yellow, FinalCardContainer, CardFront, InfoGrid, NameTag, CardBack, Name, Brand, CardText, Address, PhoneNumber, Email, TextLg, TextSm, UploadButton } from "../styles/emotion";
 import { FaLaptop, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { useScreenshot } from 'use-react-screenshot';
 import html2canvas from 'html2canvas';
@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas';
 export default function Home() {
   const [selectedtemplate, setSelectedTemplate] = useState(false)
   const [submittedform, setSubmittedForm] = useState(false);
+  const [background, setBackground] = useState("")
   const [finalcard, setFinalCard] = useState();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,18 +17,18 @@ export default function Home() {
   const [location, setLocation] = useState('');
   const [website, setWebsite] = useState('');
   const [brand, setBrand] = useState('');
-  const [link, setLink] = useState('');
   const [userprofile, takeScreenshot] = useScreenshot();
+  const [ link, setLink] = useState('');
 
   const refOne = createRef();
   const refTwo = createRef();
   const finalcardRef = useRef();
 
-  const $ = require('jquery')
+  const bg1 = "https://res.cloudinary.com/dogjmmett/image/upload/v1646384349/template1_eugneu.png";
+  let bg2 = "https://res.cloudinary.com/dogjmmett/image/upload/v1646345504/template2_llfh3k.png";
 
-  let backgroundURL = ""
   const Card1 = forwardRef((props, ref) => (
-    <Card_1 ref={refOne} id="card" onClick={template1Handler} >
+    <Card_1 ref={refOne} id="card"  >
       <ColorGrid>
         <Black />
         <Red1 />
@@ -38,7 +39,7 @@ export default function Home() {
   ));
 
   const Card2 = forwardRef((props, ref) => (
-    <Card_2 ref={refTwo} onClick={template2Handler}>
+    <Card_2>
       <Blue />
       <Yellow />
       <Pink />
@@ -46,63 +47,35 @@ export default function Home() {
     </Card_2>
   ));
 
-  const template1Handler = () => {
+  const templateHandler = () => {
     setSelectedTemplate(true);
-    html2canvas(refOne.current).then((canvas) => {
-      uploadHandler(canvas.toDataURL());
-    })
   }
 
-  const template2Handler = () => {
-    setSelectedTemplate(true);
-    html2canvas(refTwo.current).then((canvas) => {
-      console.log(canvas.toDataURL());
-    })
-  }
-
-  const detailsHandler = async () => {
+  const detailsHandler = () => {
     setSubmittedForm(true);
-    console.log(getImage)
-  }
-  
-  
-  const finalcardHandler = () => {
-    html2canvas($(finalcardRef.current)[0]).then(canvas => (
-
-      console.log(canvas.toDataURL())
-    ))
-      // try {
-      //   fetch('/api/upload', {
-      //     method: 'POST',
-      //     body: JSON.stringify({ data: getImage }),
-      //     headers: { 'Content-Type': 'application/json' },
-      //   })
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //        console.log(data.data)
-      //     })
-      // } catch (error) {
-      //   console.error(error);
-      // }
-    
+    document.getElementById("front").style.backgroundImage = `url(${bg1})`;
+    document.getElementById("back").style.backgroundImage = `url(${bg1})`;
+    html2canvas(finalcardRef.current).then(function(canvas) {
+      uploadHandler(canvas.toDataURL())
+    })
   }
 
-  const uploadHandler = async (card) => {
-    try {
-      fetch('/api/upload', {
-        method: 'POST',
-        body: JSON.stringify({ data: card }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          backgroundURL = data.data
-          document.getElementById("front").style.backgroundImage = `url(${backgroundURL})`
-          document.getElementById("back").style.backgroundImage = `url(${backgroundURL})`
+  const uploadHandler = async () => {
+    html2canvas(finalcardRef.current).then(function(canvas) {
+      try {
+        fetch('/api/upload', {
+          method: 'POST',
+          body: JSON.stringify({ data: canvas.toDataURL() }),
+          headers: { 'Content-Type': 'application/json' },
         })
-    } catch (error) {
-      console.error(error);
-    }
+          .then((response) => response.json())
+          .then((data) => {
+            setLink(data.data);
+          });
+      } catch (error) {
+        console.error(error);
+      }
+  });
   }
   return (
     <>
@@ -175,8 +148,8 @@ export default function Home() {
               </FormContainer>
             }
             <FinalCardContainer>
-              <Card ref={finalcardRef}>
-                <Front id="front">
+              <div ref={finalcardRef}>
+                <CardFront id="front">
                   <InfoGrid>
                     <Name>{name ? name : 'Your Name'}</Name>
                     <Brand>{brand ? brand : 'Company / Brand Name'}</Brand>
@@ -196,22 +169,22 @@ export default function Home() {
                       <CardText>{website ? website : 'website'}</CardText>
                     </Email>
                   </InfoGrid>
-                </Front>
+                </CardFront>
 
-                <Back id="back">
+                <CardBack id="back">
                   <NameTag>
                     <TextLg>{name ? name : 'Your Name'}</TextLg>
                     <TextSm>
                       {brand ? brand : 'Company / Brand name'}
                     </TextSm>
                   </NameTag>
-                </Back>
-              </Card>
-              <UploadButton onClick={finalcardHandler}>Upload</UploadButton>
+                </CardBack>
+              </div>
+              <UploadButton onClick={uploadHandler}>Upload</UploadButton>
             </FinalCardContainer>
           </Details>
           :
-          <Templates >
+          <Templates onClick={templateHandler}>
             <Text>Select Design </Text>
             <Card1 ref={refOne} />
             <Card2 ref={refTwo} />

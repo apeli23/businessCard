@@ -69,7 +69,7 @@ export default function Home() {
   const finalcardHandler = () => {
     html2canvas($(finalcardRef.current)[0]).then(canvas => (
 
-      console.log(canvas.toDataURL())
+      console.log(canvas)
     ))
       // try {
       //   fetch('/api/upload', {

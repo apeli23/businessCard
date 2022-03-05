@@ -62,6 +62,7 @@ export default function Home() {
 
   const detailsHandler = async () => {
     setSubmittedForm(true);
+    const getImage =  await takeScreenshot(finalcardRef.current)
     console.log(getImage)
   }
   
@@ -69,7 +70,7 @@ export default function Home() {
   const finalcardHandler = () => {
     html2canvas($(finalcardRef.current)[0]).then(canvas => (
 
-      console.log(canvas.toDataURL())
+      console.log(canvas)
     ))
       // try {
       //   fetch('/api/upload', {
@@ -175,7 +176,7 @@ export default function Home() {
               </FormContainer>
             }
             <FinalCardContainer>
-              <Card ref={finalcardRef}>
+              <Card >
                 <Front id="front">
                   <InfoGrid>
                     <Name>{name ? name : 'Your Name'}</Name>

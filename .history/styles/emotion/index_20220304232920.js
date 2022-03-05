@@ -224,7 +224,7 @@ export const InfoGrid = styled.div`
   z-index: 2;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.363);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.432);
   border-radius: 6px;
   font-size: 0.7rem; /*12px;*/
@@ -236,7 +236,7 @@ export const InfoGrid = styled.div`
 
 export const Back = styled.div`
   height: 220px;
-  width: 390px;
+  width: 380px;
   box-shadow: 2px 5px 15px 0px #17161694;
   margin-top: 10%;
   display: flex;

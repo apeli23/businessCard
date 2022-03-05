@@ -23,9 +23,11 @@ export default function Home() {
   const refTwo = createRef();
   const finalcardRef = useRef();
 
-  const $ = require('jquery')
-
   let backgroundURL = ""
+
+  const bg1 = "https://res.cloudinary.com/dogjmmett/image/upload/v1646384349/template1_eugneu.png";
+  let bg2 = "https://res.cloudinary.com/dogjmmett/image/upload/v1646345504/template2_llfh3k.png";
+
   const Card1 = forwardRef((props, ref) => (
     <Card_1 ref={refOne} id="card" onClick={template1Handler} >
       <ColorGrid>
@@ -60,31 +62,27 @@ export default function Home() {
     })
   }
 
-  const detailsHandler = async () => {
+  const detailsHandler = () => {
     setSubmittedForm(true);
-    console.log(getImage)
   }
   
   
   const finalcardHandler = () => {
-    html2canvas($(finalcardRef.current)[0]).then(canvas => (
-
-      console.log(canvas.toDataURL())
-    ))
-      // try {
-      //   fetch('/api/upload', {
-      //     method: 'POST',
-      //     body: JSON.stringify({ data: getImage }),
-      //     headers: { 'Content-Type': 'application/json' },
-      //   })
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //        console.log(data.data)
-      //     })
-      // } catch (error) {
-      //   console.error(error);
-      // }
-    
+    html2canvas(finalcardRef.current).then((canvas) => {
+      try {
+        fetch('/api/upload', {
+          method: 'POST',
+          body: JSON.stringify({ data: canvas.t }),
+          headers: { 'Content-Type': 'application/json' },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+             console.log(data.data)
+          })
+      } catch (error) {
+        console.error(error);
+      }
+    })
   }
 
   const uploadHandler = async (card) => {

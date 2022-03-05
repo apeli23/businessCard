@@ -23,9 +23,11 @@ export default function Home() {
   const refTwo = createRef();
   const finalcardRef = useRef();
 
-  const $ = require('jquery')
-
   let backgroundURL = ""
+
+  const bg1 = "https://res.cloudinary.com/dogjmmett/image/upload/v1646384349/template1_eugneu.png";
+  let bg2 = "https://res.cloudinary.com/dogjmmett/image/upload/v1646345504/template2_llfh3k.png";
+
   const Card1 = forwardRef((props, ref) => (
     <Card_1 ref={refOne} id="card" onClick={template1Handler} >
       <ColorGrid>
@@ -60,17 +62,14 @@ export default function Home() {
     })
   }
 
-  const detailsHandler = async () => {
+  const detailsHandler = () => {
     setSubmittedForm(true);
-    console.log(getImage)
+    const getImage = () => takeScreenshot(finalcardRef.current)
   }
   
   
   const finalcardHandler = () => {
-    html2canvas($(finalcardRef.current)[0]).then(canvas => (
-
-      console.log(canvas.toDataURL())
-    ))
+    console.log(userprofile)
       // try {
       //   fetch('/api/upload', {
       //     method: 'POST',

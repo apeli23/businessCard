@@ -23,9 +23,9 @@ export default function Home() {
   const refTwo = createRef();
   const finalcardRef = useRef();
 
-  const $ = require('jquery')
-
   let backgroundURL = ""
+ 
+
   const Card1 = forwardRef((props, ref) => (
     <Card_1 ref={refOne} id="card" onClick={template1Handler} >
       <ColorGrid>
@@ -60,17 +60,14 @@ export default function Home() {
     })
   }
 
-  const detailsHandler = async () => {
+  const detailsHandler = () => {
     setSubmittedForm(true);
-    console.log(getImage)
+    const getImage = () => takeScreenshot(finalcardRef.current)
   }
   
   
   const finalcardHandler = () => {
-    html2canvas($(finalcardRef.current)[0]).then(canvas => (
-
-      console.log(canvas.toDataURL())
-    ))
+    console.log(userprofile)
       // try {
       //   fetch('/api/upload', {
       //     method: 'POST',
@@ -175,7 +172,7 @@ export default function Home() {
               </FormContainer>
             }
             <FinalCardContainer>
-              <Card ref={finalcardRef}>
+              <Card >
                 <Front id="front">
                   <InfoGrid>
                     <Name>{name ? name : 'Your Name'}</Name>
