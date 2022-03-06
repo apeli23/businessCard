@@ -93,8 +93,8 @@ export default function Home() {
       }
     })
   }
-
-
+  
+ 
   return (
     <>
       <TitleContainer>
@@ -192,10 +192,7 @@ export default function Home() {
                 </div>
                 <Back id="back" ref={backRef}>
                   <NameTag>
-                    <TextLg>{name ? name : 'Your Name'}</TextLg>
-                    <TextSm>
-                      {brand ? brand : 'Company / Brand name'}
-                    </TextSm>
+                    
                   </NameTag>
                 </Back>
               </Card>

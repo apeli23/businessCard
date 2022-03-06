@@ -40,6 +40,9 @@ export default function Home() {
         <Red2 />
         <Green />
       </ColorGrid>
+      <InfoGrid>
+
+      </InfoGrid>
     </Card_1>
   ));
   const Tag = forwardRef((props, ref) => (
@@ -93,8 +96,8 @@ export default function Home() {
       }
     })
   }
-
-
+  
+ 
   return (
     <>
       <TitleContainer>
@@ -192,13 +195,11 @@ export default function Home() {
                 </div>
                 <Back id="back" ref={backRef}>
                   <NameTag>
-                    <TextLg>{name ? name : 'Your Name'}</TextLg>
-                    <TextSm>
-                      {brand ? brand : 'Company / Brand name'}
-                    </TextSm>
+
                   </NameTag>
                 </Back>
               </Card>
+              <UploadButton onClick={finalcardHandler}>Upload</UploadButton>
             </FinalCardContainer>
           </Details>
           :

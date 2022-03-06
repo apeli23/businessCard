@@ -194,7 +194,7 @@ export default function Home() {
                   <NameTag>
                     <TextLg>{name ? name : 'Your Name'}</TextLg>
                     <TextSm>
-                      {brand ? brand : 'Company / Brand name'}
+                      {props?.brand ? props.brand : 'Company / Brand name'}
                     </TextSm>
                   </NameTag>
                 </Back>

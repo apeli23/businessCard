@@ -40,6 +40,9 @@ export default function Home() {
         <Red2 />
         <Green />
       </ColorGrid>
+      <InfoGrid>
+
+      </InfoGrid>
     </Card_1>
   ));
   const Tag = forwardRef((props, ref) => (
@@ -66,8 +69,8 @@ export default function Home() {
           .then((response) => response.json())
           .then((data) => {
             background = data.data
-            document.getElementById("front").style.backgroundImage = `url(${background})`
-            document.getElementById("back").style.backgroundImage = `url(${background})`
+            document.getElementById("front").style.backgroundImage = `url(${backgroundURL})`
+            document.getElementById("back").style.backgroundImage = `url(${backgroundURL})`
           })
       } catch (error) {
         console.error(error);
@@ -93,12 +96,22 @@ export default function Home() {
       }
     })
   }
+  const testHandler = async () => {
+    let front = testCanvas.current;
+    let context = front.getContext("2d")
+   document.getElementById("test").style.backgroundImage = `url(https://res.cloudinary.com/dogjmmett/image/upload/v1646384349/template1_eugneu.png)`
+  }
 
-
+  const testCapture = () => {
+    html2canvas(testRef.current).then((canvas) => {
+      console.log(canvas.toDataURL("png"))
+    })
+  }
   return (
     <>
       <TitleContainer>
         <Title>Design Business card with Nextjs and Emotion css</Title>
+        <button onClick={testHandler}>click</button>
       </TitleContainer>
       <Container>
         {selectedtemplate ?
@@ -192,13 +205,11 @@ export default function Home() {
                 </div>
                 <Back id="back" ref={backRef}>
                   <NameTag>
-                    <TextLg>{name ? name : 'Your Name'}</TextLg>
-                    <TextSm>
-                      {brand ? brand : 'Company / Brand name'}
-                    </TextSm>
+
                   </NameTag>
                 </Back>
               </Card>
+              <UploadButton onClick={finalcardHandler}>Upload</UploadButton>
             </FinalCardContainer>
           </Details>
           :

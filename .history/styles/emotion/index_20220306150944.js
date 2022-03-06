@@ -274,8 +274,7 @@ export const NameTag = styled.div`
    height: 40%;
    box-shadow: 2px 5px 15px 0px #17161694;
    margin-top: 17%;
-  background:  rgba(255, 255, 255, 0.363)
-
+   background: transparent;
 `;
 
 export const Name = styled.h2`

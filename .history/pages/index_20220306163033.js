@@ -192,9 +192,9 @@ export default function Home() {
                 </div>
                 <Back id="back" ref={backRef}>
                   <NameTag>
-                    <TextLg>{name ? name : 'Your Name'}</TextLg>
+                    <TextLg>{name ? props.name : 'Your Name'}</TextLg>
                     <TextSm>
-                      {brand ? brand : 'Company / Brand name'}
+                      {props?.brand ? props.brand : 'Company / Brand name'}
                     </TextSm>
                   </NameTag>
                 </Back>

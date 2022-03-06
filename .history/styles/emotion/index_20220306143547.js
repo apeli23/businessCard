@@ -212,20 +212,22 @@ export const Card = styled.div`
   height: 100%;
   width: 390px;
 `;
-export const Front = styled.div`
+export const Front = styled.canvas`
+  border-radius: 1rem;
   box-shadow: 2px 5px 15px 0px #17161694;
   margin-top: 10%;
   height: 220px;
   width: 390px;
 `;
 
-export const Back = styled.div`
+export const Back = styled.canvas`
   height: 220px;
   width: 390px;
   box-shadow: 2px 5px 15px 0px #17161694;
   margin-top: 10%;
   display: flex;
   flex-wrap: wrap;
+  border-radius: 1rem;
 `;
 
 export const InfoGrid = styled.div`
@@ -248,8 +250,8 @@ export const Grid = styled.div`
   grid-column: 2/3;
   grid-row: 2/3;
   z-index: 2;
-  width: 370px;
-  height: 210px;
+  width: 100%;
+  height: 100%;
   background:  rgba(255, 255, 255, 0.363);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.432);
   border-radius: 6px;
@@ -259,14 +261,8 @@ export const Grid = styled.div`
   grid-template-rows: repeat(3, 1fr);
   line-height: 1px;
   color: #FFF;
-  margin-top: -220px;
-  margin-left: 10px;
-  position: absolute;
-
 `;
-export const Contain = styled.div`
-  border: 5px solid red;
-`
+
 
 export const NameTag = styled.div`
    margin-top: 0px;
@@ -274,8 +270,7 @@ export const NameTag = styled.div`
    height: 40%;
    box-shadow: 2px 5px 15px 0px #17161694;
    margin-top: 17%;
-  background:  rgba(255, 255, 255, 0.363)
-
+   background: transparent;
 `;
 
 export const Name = styled.h2`

@@ -232,7 +232,7 @@ export const InfoGrid = styled.div`
   grid-column: 2/3;
   grid-row: 2/3;
   z-index: 2;
-  width: 100%;
+  width: 90%;
   height: 100%;
   background:  rgba(255, 255, 255, 0.363);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.432);
@@ -274,8 +274,7 @@ export const NameTag = styled.div`
    height: 40%;
    box-shadow: 2px 5px 15px 0px #17161694;
    margin-top: 17%;
-  background:  rgba(255, 255, 255, 0.363)
-
+   background: transparent;
 `;
 
 export const Name = styled.h2`
