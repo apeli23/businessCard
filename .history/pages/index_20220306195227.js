@@ -123,7 +123,7 @@ export default function Home() {
                   <Label>Company / Business Name</Label>
                   <Input
                     id="brandname"
-                    placeholder="company / brand / name"
+                    placeholder="company / brand /name"
                     onChange={(e) => {
                       setBrand(e.target.value);
                     }}

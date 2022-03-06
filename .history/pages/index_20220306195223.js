@@ -122,8 +122,8 @@ export default function Home() {
                   />
                   <Label>Company / Business Name</Label>
                   <Input
-                    id="brandname"
-                    placeholder="company / brand / name"
+                    id="brand name"
+                    placeholder="company / breand /name"
                     onChange={(e) => {
                       setBrand(e.target.value);
                     }}

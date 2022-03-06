@@ -10,7 +10,7 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h2`
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 100;
 `;
 
 export const Container = styled.div`
